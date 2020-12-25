@@ -1,0 +1,80 @@
+﻿@page
+@model WeatherWeb.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <table>
+        <tr>
+            <td colspan="3">
+                <select id="citydropdown">
+                    <option value="" selected disabled>--Select a city--</option>
+                    @foreach (var location in Model.Locations)
+                    {
+                        <option value="@location.Latitude,@location.Longitude,@location.UnixTime">@location.City,@location.State</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Summary</th>
+                            <th>Temperature</th>
+                            <th>UV Index</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="text-center"></span>
+                                <label id="summary"></label>
+                            </td>
+                            <td>
+                                <span class="text-center"></span>
+                                <label id="temp"></label>
+                            </td>
+                            <td>
+                                <span class="text-center"></span>
+                                <label id="uv"></label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#citydropdown').change(function () {
+                var dropDownVal = $(this).val();
+                //call to OnGetWeatherData(string param). 
+                //Set weather data under success and set field to empty in case of error.
+                    $.ajax({
+                        type: 'GET',
+                        data: { param: dropDownVal },
+                        url: '@Url.Page("index","WeatherData")',
+                        success: function (result) {
+                            $('#summary').text(result.currently.summary);
+                            $('#temp').text(result.currently.temperature);
+                            $('#uv').text(result.currently.uvIndex);
+                        },
+                        error: function(){
+                            $('#summary').text('');
+                            $('#temp').text('');
+                            $('#uv').text('');
+                        }
+                    });
+            });
+        });
+    </script>
+}
+
+
