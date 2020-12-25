@@ -1,0 +1,36 @@
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.exe
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.deps.json
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.runtimeconfig.json
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.runtimeconfig.dev.json
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.dll
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.pdb
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.Views.dll
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\bin\Debug\netcoreapp3.1\Weather Web.Views.pdb
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.AssemblyInfoInputs.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.AssemblyInfo.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.csproj.CoreCompileInputs.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.RazorAssemblyInfo.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.RazorAssemblyInfo.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\staticwebassets\Weather Web.StaticWebAssets.Manifest.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\staticwebassets\Weather Web.StaticWebAssets.xml
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\Weather Web.styles.css
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.TagHelpers.input.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.TagHelpers.output.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.RazorCoreGenerate.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.RazorTargetAssemblyInfo.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.RazorTargetAssemblyInfo.cs
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.Views.pdb
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.dll
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.pdb
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.genruntimeconfig.cache
+C:\Users\asudan\source\repos\software-engineer-exercise\Weather Web\Weather Web\obj\Debug\netcoreapp3.1\Weather Web.csproj.CopyComplete
