@@ -1,0 +1,27 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "AppSettings": {
+    "Cities": [
+      {
+        "id": 0,
+        "Name": "City Name",
+        "State": "State Code",
+        "Country": "Country Code"
+      },
+      {
+        "id": 1,
+        "Name": "Some City",
+        "State": "MI",
+        "Country": "USA"
+      }
+    ],
+    "ApiKey": "DarkSky API Key Here"
+  }
+}

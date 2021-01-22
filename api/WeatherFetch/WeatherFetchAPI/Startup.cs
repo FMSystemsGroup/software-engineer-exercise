@@ -18,6 +18,9 @@ namespace WeatherFetchAPI
 	{
 		public Startup(IWebHostEnvironment env)
 		{
+			//In order to set up the app settings correctly for testing
+			//the file needs to be loaded here instead of being passed in
+			//otherwise the configs don't get loaded correctly when running tests
 			Configuration = new ConfigurationBuilder()
 				.SetBasePath(AppContext.BaseDirectory)
 				.AddJsonFile("appsettings.json", false, true)
@@ -38,7 +41,7 @@ namespace WeatherFetchAPI
 				.AddNewtonsoftJson(options => {
 					options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 				});
-
+			services.AddHttpClient();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
