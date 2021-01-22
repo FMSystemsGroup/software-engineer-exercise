@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using WeatherFetchAPI.Models;
 using System.Net.Http;
+using System;
 
 namespace WeatherFetchAPI.Controllers
 {
@@ -31,7 +32,19 @@ namespace WeatherFetchAPI.Controllers
 				return NotFound();
 			}
 
-			return NotFound();
+			var client = new HttpClient();
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri($"https://api.darksky.net/forecast/{_appSettings.Value.ApiKey}/42.3601,-71.0589"),
+			};
+
+			using (var response = await client.SendAsync(request))
+			{
+				response.EnsureSuccessStatusCode();
+				var body = await response.Content.ReadAsStringAsync();
+				return body;
+			}
 		}
 
 		/***
