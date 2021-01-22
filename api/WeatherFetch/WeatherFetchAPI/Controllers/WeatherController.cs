@@ -24,7 +24,22 @@ namespace WeatherFetchAPI.Controllers
 		[HttpGet("ForCity/{cityId}")]
 		public async Task<ActionResult<string>> GetWeatherForCity(int cityId)
 		{
-			var cityList = _appSettings.Value.Cities;
+			var chosenCity = GetCityById(cityId, _appSettings.Value.Cities);
+
+			if (chosenCity.id == -1)
+			{
+				return NotFound();
+			}
+
+			return NotFound();
+		}
+
+		/***
+		 * Selects the city record that matches the given id.
+		 * Returns a City object with -1 for the id value if a matching
+		 * city is not found.
+		 ***/
+		public City GetCityById(int cityId, List<City> cityList) {
 			var chosenCity = new City()
 			{
 				id = -1
@@ -38,12 +53,7 @@ namespace WeatherFetchAPI.Controllers
 				}
 			}
 
-			if (chosenCity.id == -1)
-			{
-				return NotFound();
-			}
-
-			return "";
+			return chosenCity;
 		}
 	}
 }

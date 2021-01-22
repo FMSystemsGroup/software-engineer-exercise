@@ -38,5 +38,20 @@ namespace IntegrationTests
 			Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
 		}
 
+		[Theory]
+		[InlineData("GET", 0)]
+		public async Task ValidCityGetsWeatherResult(string method, int? cityId = null)
+		{
+			//Arrange
+			var request = new HttpRequestMessage(new HttpMethod(method), $"api/Weather/ForCity/{cityId}");
+
+			//Act
+			var response = await _client.SendAsync(request);
+
+			//Assert
+			response.EnsureSuccessStatusCode();
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+		}
+
 	}
 }
