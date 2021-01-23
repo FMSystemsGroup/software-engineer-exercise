@@ -2,7 +2,7 @@
 
 The WeatherFetch API exposes two endpoints. The city controller exposes a GET request to /api/City that will return a list of available cities.\
 The weather controller exposes a GET to /api/Weather/ForCity/[cityId] where cityId is the id of a city from the city controller endpoint.\
-This second endpoint takes the city requested and uses it to find the weather for that city at the date specified in the appsettings file property DateToCheck
+This second endpoint takes the city requested and uses it to find the weather for that city at the date specified in the appsettings file property DateToCheck.
 
 ## appsettings.json file
 There is an example.appsettings.jaon file included to show you the properties needed for the API to function properly.\
