@@ -30,6 +30,7 @@ namespace WeatherFetchAPI
 		}
 
 		public IConfiguration Configuration { get; }
+		readonly string AllowedOrigins = "_allowedOrigins";
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
@@ -37,6 +38,19 @@ namespace WeatherFetchAPI
 			services.AddControllers();
 			services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 			services.AddSingleton<IConfiguration>(Configuration);
+			var corsOrigin = Configuration.GetValue<string>("AllowedCORS");
+			services.AddCors(options =>
+			{
+				options.AddPolicy(name: AllowedOrigins,
+					builder =>
+					{
+						builder.WithOrigins(corsOrigin)
+						.WithMethods("OPTIONS", "GET", "POST") //only allow GET and POST requests
+						.AllowAnyHeader();
+					}
+				);
+
+			});
 			services.AddControllers()
 				.AddNewtonsoftJson(options => {
 					options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -55,6 +69,8 @@ namespace WeatherFetchAPI
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
+
+			app.UseCors(AllowedOrigins);
 
 			app.UseAuthorization();
 
