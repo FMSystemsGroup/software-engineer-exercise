@@ -15,3 +15,8 @@ For example, locally I have appsettings.json, appsettings.Development.json, apps
 
 The unit tests will run regardless of app settings. They generate their own data to run the tests. Anything that uses an API key\
 is run through the integration tests. That way the API key is still kept in the appsettings file and out of the git repository.
+
+## Future optimizations
+
+The city records should be moved out of the app settings and into a data store of some kind. That way, we can keep the lat/lng and timezone info of each city stored\
+without having to fecth the geocoding data every time a city is selected. This would also allow us to easily add more cities. In the future, it may help to add the ability for users to specify the city they want to check the temperature for as well as the date to check.
