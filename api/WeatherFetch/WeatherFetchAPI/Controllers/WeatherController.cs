@@ -5,8 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using WeatherFetchAPI.Models;
+using WeatherFetchAPI.Helpers;
 using System.Net.Http;
 using System;
+using Microsoft.AspNetCore.Http;
+using TimeZoneConverter;
 
 namespace WeatherFetchAPI.Controllers
 {
@@ -15,58 +18,49 @@ namespace WeatherFetchAPI.Controllers
 	public class WeatherController : ControllerBase
 	{
 		private readonly IOptions<AppSettings> _appSettings;
-		private readonly IHttpClientFactory _clientFactory;
 
-		public WeatherController(IOptions<AppSettings> settings, IHttpClientFactory clientFactory) {
+		public WeatherController(IOptions<AppSettings> settings) {
 			_appSettings = settings;
-			_clientFactory = clientFactory;
 		}
 		// GET: api/<WeatherController>
 		[HttpGet("ForCity/{cityId}")]
 		public async Task<ActionResult<string>> GetWeatherForCity(int cityId)
 		{
-			var chosenCity = GetCityById(cityId, _appSettings.Value.Cities);
+			var chosenCity = CityHelper.GetCityById(cityId, _appSettings.Value.Cities);
 
 			if (chosenCity.id == -1)
 			{
 				return NotFound();
 			}
 
-			var client = new HttpClient();
-			var request = new HttpRequestMessage
+			try
 			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri($"https://api.darksky.net/forecast/{_appSettings.Value.ApiKey}/42.3601,-71.0589"),
-			};
+				var helper = new WeatherHelper(_appSettings.Value.ApiKey);
+				//DarkSky requires the lat/lng of the city so we need to get
+				//that using the city and state from a geocoding service
+				var geoData = helper.GetForwardGeocodeForCity(chosenCity.Name, chosenCity.State, _appSettings.Value.OpenCageApiKey);
 
-			using (var response = await client.SendAsync(request))
-			{
-				response.EnsureSuccessStatusCode();
-				var body = await response.Content.ReadAsStringAsync();
+				if (geoData.Results.Count() < 1) {
+					return NotFound();
+				}
+
+				var firstResult = geoData.Results.First();
+
+				var time = DateTime.Parse(_appSettings.Value.DateToCheck);
+				var offsetTime = helper.GetOffset(firstResult.Annotations.Timezone.Name, time); ;
+				var unixDateTime = helper.GetUnixTimeStampForDate(offsetTime);
+
+				var body = await helper.GetWeatherForCityAtTime(firstResult.Geometry.Latitude,
+					firstResult.Geometry.Longitude,
+					unixDateTime);
+
 				return body;
 			}
-		}
-
-		/***
-		 * Selects the city record that matches the given id.
-		 * Returns a City object with -1 for the id value if a matching
-		 * city is not found.
-		 ***/
-		public City GetCityById(int cityId, List<City> cityList) {
-			var chosenCity = new City()
+			catch (Exception ex)
 			{
-				id = -1
-			};
-
-			foreach (var city in cityList)
-			{
-				if (city.id == cityId)
-				{
-					chosenCity = city;
-				}
+				Console.WriteLine(ex.Message);
+				return StatusCode(StatusCodes.Status500InternalServerError);
 			}
-
-			return chosenCity;
 		}
 	}
 }

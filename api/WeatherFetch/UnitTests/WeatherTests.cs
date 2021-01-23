@@ -1,67 +1,105 @@
 using System;
 using Xunit;
 using WeatherFetchAPI.Models;
-using WeatherFetchAPI.Controllers;
+using WeatherFetchAPI.Helpers;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
+using OpenCage.Geocode;
 
 namespace UnitTests
 {
 	public class WeatherTests
 	{
-		private readonly WeatherController _weatherController;
-		private readonly List<City> _cityList;
-
-		public WeatherTests()
+		[Fact]
+		public void GetOffsetReturnsCorrectDSTValue()
 		{
-			var settings = new AppSettings()
+			//Arrange
+			var location = new Location()
 			{
-				Cities = new List<City>()
-			};
-
-			settings.Cities.Add(
-				new City()
+				Annotations = new Annotations()
+				{
+					Timezone = new Timezone()
 					{
-						id=0,
-						Name="TestCity"
+						Name = "America/Detroit"
 					}
-			);
-			_cityList = settings.Cities;
-
-
-			var options = Options.Create<AppSettings>(settings);
-
-
-			_weatherController = new WeatherController(options, null);
-		}
-
-		[Fact]
-		public void InvalidIdReturnsEmptyCity()
-		{
-			//Arrange
-			var cityId = 2;
-			var cities = _cityList;
+				}
+			};
+			//date within DST
+			var time = new DateTime(2018, 7, 4, 12, 0, 0);
 
 			//Act
-			var city = _weatherController.GetCityById(cityId, cities);
+			var helper = new WeatherHelper("key not required for this test");
+			var offsetTime = helper.GetOffset(location.Annotations.Timezone.Name, time);
 
 			//Assert
-			Equals(-1, city.id);
+			Assert.Equal(16, offsetTime.Hour);
 
 		}
 
 		[Fact]
-		public void ValidIdReturnsPopulatedCity()
+		public void GetOffsetReturnsCorrectStandardValue()
 		{
 			//Arrange
-			var cityId = 0;
-			var cities = _cityList;
+			var location = new Location()
+			{
+				Annotations = new Annotations()
+				{
+					Timezone = new Timezone()
+					{
+						Name = "America/Detroit"
+					}
+				}
+			};
+			//date outside of DST
+			var time = new DateTime(2018, 2, 4, 12, 0, 0);
 
 			//Act
-			var city = _weatherController.GetCityById(cityId, cities);
+			var helper = new WeatherHelper("key not required for this test");
+			var offsetTime = helper.GetOffset(location.Annotations.Timezone.Name, time);
 
 			//Assert
-			Equals("TestCity", city.Name);
+			Assert.Equal(17, offsetTime.Hour);
+
+		}
+
+		[Fact]
+		public void GetOffsetReturnsCorrectNonDSTValue()
+		{
+			//Arrange
+			var location = new Location()
+			{
+				Annotations = new Annotations()
+				{
+					Timezone = new Timezone()
+					{
+						Name = "America/Phoenix" // no DST in Arizona
+					}
+				}
+			};
+			var time = new DateTime(2018, 7, 4, 12, 0, 0);
+
+			//Act
+			var helper = new WeatherHelper("key not required for this test");
+			var offsetTime = helper.GetOffset(location.Annotations.Timezone.Name, time);
+
+			//Assert
+			Assert.Equal(19, offsetTime.Hour);
+
+		}
+
+		[Fact]
+		public void GetUnixTimeReturnsCorrectTimeStamp()
+		{
+			//Arrange
+			var time = new DateTime(2018, 7, 4, 19, 0, 0, DateTimeKind.Utc);
+			long timeToCheck = 1530730800;
+
+			//Act
+			var helper = new WeatherHelper("key not required for this test");
+			var timeStamp = helper.GetUnixTimeStampForDate(time);
+
+			//Assert
+			Assert.Equal(timeToCheck, timeStamp);
 
 		}
 	}

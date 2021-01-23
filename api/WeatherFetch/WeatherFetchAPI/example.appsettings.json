@@ -7,21 +7,21 @@
     }
   },
   "AllowedHosts": "*",
-  "AppSettings": {
-    "Cities": [
-      {
-        "id": 0,
-        "Name": "City Name",
-        "State": "State Code",
-        "Country": "Country Code"
-      },
-      {
-        "id": 1,
-        "Name": "Some City",
-        "State": "MI",
-        "Country": "USA"
-      }
-    ],
-    "ApiKey": "DarkSky API Key Here"
+    "AppSettings": {
+      "Cities": [
+        {
+          "id": 0,
+          "Name": "City Name",
+          "State": "State Code"
+        },
+        {
+          "id": 1,
+          "Name": "Some City",
+          "State": "MI" 
+        }
+      ],
+			"DateToCheck": "Date to check string", //for the date and time you want checked e.g. 2018-07-04 12:00:00
+      "ApiKey": "DarkSky API Key Here",
+      "OpenCageApiKey": "OpenCage API Key Here"
+    }
   }
-}
