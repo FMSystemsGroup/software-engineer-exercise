@@ -35,7 +35,25 @@ namespace IntegrationTests
 			var response = await _client.SendAsync(request);
 
 			//Assert
+			var responseText = await response.Content.ReadAsStringAsync();
 			Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+			Assert.Equal("City not found.", responseText);
+		}
+
+		[Theory]
+		[InlineData("GET", 1)]
+		public async Task ValidCityWithBadDataReturnsNotFound(string method, int? cityId = null)
+		{
+			//Arrange
+			var request = new HttpRequestMessage(new HttpMethod(method), $"api/Weather/ForCity/{cityId}");
+
+			//Act
+			var response = await _client.SendAsync(request);
+
+			//Assert
+			var responseText = await response.Content.ReadAsStringAsync();
+			Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+			Assert.Equal("Geographic information for city not found.", responseText);
 		}
 
 		[Theory]

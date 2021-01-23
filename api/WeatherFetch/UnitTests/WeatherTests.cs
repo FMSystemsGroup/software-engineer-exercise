@@ -29,7 +29,7 @@ namespace UnitTests
 
 			//Act
 			var helper = new WeatherHelper("key not required for this test");
-			var offsetTime = helper.GetOffset(location.Annotations.Timezone.Name, time);
+			var offsetTime = helper.GetUtcVersionOfDate(location.Annotations.Timezone.Name, time);
 
 			//Assert
 			Assert.Equal(16, offsetTime.Hour);
@@ -55,7 +55,7 @@ namespace UnitTests
 
 			//Act
 			var helper = new WeatherHelper("key not required for this test");
-			var offsetTime = helper.GetOffset(location.Annotations.Timezone.Name, time);
+			var offsetTime = helper.GetUtcVersionOfDate(location.Annotations.Timezone.Name, time);
 
 			//Assert
 			Assert.Equal(17, offsetTime.Hour);
@@ -80,7 +80,7 @@ namespace UnitTests
 
 			//Act
 			var helper = new WeatherHelper("key not required for this test");
-			var offsetTime = helper.GetOffset(location.Annotations.Timezone.Name, time);
+			var offsetTime = helper.GetUtcVersionOfDate(location.Annotations.Timezone.Name, time);
 
 			//Assert
 			Assert.Equal(19, offsetTime.Hour);

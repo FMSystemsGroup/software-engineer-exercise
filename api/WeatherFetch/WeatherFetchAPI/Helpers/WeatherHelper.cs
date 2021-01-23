@@ -50,7 +50,7 @@ namespace WeatherFetchAPI.Helpers
 		 * Get a DateTime object in UTC with the hour set to match a given location's hour
 		 * plus the offset difference
 		 */
-		public DateTime GetOffset(string locationName, DateTime time)
+		public DateTime GetUtcVersionOfDate(string locationName, DateTime time)
 		{
 			var tzInfo = TZConvert.GetTimeZoneInfo(locationName);
 			var offset = tzInfo.GetUtcOffset(time);
