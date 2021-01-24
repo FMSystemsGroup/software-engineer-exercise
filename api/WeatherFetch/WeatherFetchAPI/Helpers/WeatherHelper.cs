@@ -1,7 +1,5 @@
 ﻿using OpenCage.Geocode;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TimeZoneConverter;
@@ -10,12 +8,7 @@ namespace WeatherFetchAPI.Helpers
 {
 	public class WeatherHelper
 	{
-		private readonly Uri _darkSkyUri;
-
-		public WeatherHelper(string apiKey)
-		{
-			_darkSkyUri = new Uri($"https://api.darksky.net/forecast/{apiKey}/");
-		}
+		private readonly string _darkSkyUri = "https://api.darksky.net/forecast";
 
 		/***
 		 * Use the OpenCage API to get the forward geocode info for a given city/state
@@ -29,13 +22,13 @@ namespace WeatherFetchAPI.Helpers
 		/***
 		 * Use the DarkSky API to get the weather for a given latitude, longitude and unix time stamp
 		 */
-		public async Task<string> GetWeatherForCityAtTime(double lat, double lon, long unixTime)
+		public async Task<string> GetWeatherForCityAtTime(double lat, double lon, long unixTime, string apiKey)
 		{
 			var client = new HttpClient();
 			var request = new HttpRequestMessage
 			{
 				Method = HttpMethod.Get,
-				RequestUri = new Uri($"{_darkSkyUri}{lat},{lon},{unixTime}?exclude=hourly,flags,daily")
+				RequestUri = new Uri($"{_darkSkyUri}/{apiKey}/{lat},{lon},{unixTime}?exclude=hourly,flags,daily")
 			};
 
 			using (var response = await client.SendAsync(request))

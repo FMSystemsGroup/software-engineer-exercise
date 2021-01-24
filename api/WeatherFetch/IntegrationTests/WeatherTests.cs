@@ -1,14 +1,10 @@
-using System;
 using Xunit;
 using WeatherFetchAPI;
-using WeatherFetchAPI.Models;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.AspNetCore.Hosting;
-using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net;
-using System.Collections.Generic;
 
 namespace IntegrationTests
 {

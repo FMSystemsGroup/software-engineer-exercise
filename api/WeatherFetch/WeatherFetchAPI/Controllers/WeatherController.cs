@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
 using WeatherFetchAPI.Models;
 using WeatherFetchAPI.Helpers;
-using System.Net.Http;
 using System;
 using Microsoft.AspNetCore.Http;
-using TimeZoneConverter;
 using Microsoft.Extensions.Logging;
 
 namespace WeatherFetchAPI.Controllers
@@ -43,7 +39,7 @@ namespace WeatherFetchAPI.Controllers
 
 			try
 			{
-				var helper = new WeatherHelper(_appSettings.Value.ApiKey);
+				var helper = new WeatherHelper();
 				//DarkSky requires the lat/lng of the city so we need to get
 				//that using the city and state from a geocoding service
 				var geoData = helper.GetForwardGeocodeForCity(chosenCity.Name, chosenCity.State, _appSettings.Value.OpenCageApiKey);
@@ -59,7 +55,8 @@ namespace WeatherFetchAPI.Controllers
 
 				var body = await helper.GetWeatherForCityAtTime(firstResult.Geometry.Latitude,
 					firstResult.Geometry.Longitude,
-					unixDateTime);
+					unixDateTime,
+					_appSettings.Value.ApiKey);
 				return body;
 			}
 			catch (Exception ex)

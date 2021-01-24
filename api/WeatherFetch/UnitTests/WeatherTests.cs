@@ -1,9 +1,6 @@
 using System;
 using Xunit;
-using WeatherFetchAPI.Models;
 using WeatherFetchAPI.Helpers;
-using System.Collections.Generic;
-using Microsoft.Extensions.Options;
 using OpenCage.Geocode;
 
 namespace UnitTests
@@ -28,7 +25,7 @@ namespace UnitTests
 			var time = new DateTime(2018, 7, 4, 12, 0, 0);
 
 			//Act
-			var helper = new WeatherHelper("key not required for this test");
+			var helper = new WeatherHelper();
 			var offsetTime = helper.GetUtcVersionOfDate(location.Annotations.Timezone.Name, time);
 
 			//Assert
@@ -54,7 +51,7 @@ namespace UnitTests
 			var time = new DateTime(2018, 2, 4, 12, 0, 0);
 
 			//Act
-			var helper = new WeatherHelper("key not required for this test");
+			var helper = new WeatherHelper();
 			var offsetTime = helper.GetUtcVersionOfDate(location.Annotations.Timezone.Name, time);
 
 			//Assert
@@ -79,7 +76,7 @@ namespace UnitTests
 			var time = new DateTime(2018, 7, 4, 12, 0, 0);
 
 			//Act
-			var helper = new WeatherHelper("key not required for this test");
+			var helper = new WeatherHelper();
 			var offsetTime = helper.GetUtcVersionOfDate(location.Annotations.Timezone.Name, time);
 
 			//Assert
@@ -95,7 +92,7 @@ namespace UnitTests
 			long timeToCheck = 1530730800;
 
 			//Act
-			var helper = new WeatherHelper("key not required for this test");
+			var helper = new WeatherHelper();
 			var timeStamp = helper.GetUnixTimeStampForDate(time);
 
 			//Assert
