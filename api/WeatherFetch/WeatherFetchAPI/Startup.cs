@@ -37,7 +37,7 @@ namespace WeatherFetchAPI
 			services.AddSingleton<IConfiguration>(Configuration);
 			services.AddDbContext<WeatherFetchContext>(options =>
 				options.UseSqlite($"Data Source={appSettings.DatabaseFileName}"));
-			var corsOrigin = Configuration.GetValue<string>("AllowedCORS");
+			var corsOrigin = Configuration.GetValue<string>("AllowedCORS").Split(',');
 			services.AddCors(options =>
 			{
 				options.AddPolicy(name: AllowedOrigins,
@@ -65,7 +65,7 @@ namespace WeatherFetchAPI
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.UseHttpsRedirection();
+			//app.UseHttpsRedirection();
 
 			app.UseRouting();
 
