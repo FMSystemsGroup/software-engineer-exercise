@@ -20,7 +20,7 @@ You will also see any lint errors in the console.
 
 ### `npm run build:production`
 
-In order to run the build command, you'll first need to run npm install env-cmd.\
+In order to run the build command, you'll first need to run npm install env-cmd.
 
 Builds the app for production to the `build` folder.\
 A .env.production file that uses the same properties as the example.env file is required.\
