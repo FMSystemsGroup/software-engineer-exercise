@@ -15,13 +15,13 @@ namespace IntegrationTests
 		public WeatherTests()
 		{
 			var server = new TestServer(new WebHostBuilder()
-				.UseEnvironment("Integration")
+				.UseEnvironment("Development")
 				.UseStartup<Startup>());
 			_client = server.CreateClient();
 		}
 
 		[Theory]
-		[InlineData("GET", 2)]
+		[InlineData("GET", 0)]
 		public async Task ErrorReturnedForBadCityId(string method, int? cityId = null)
 		{
 			//Arrange
@@ -38,22 +38,6 @@ namespace IntegrationTests
 
 		[Theory]
 		[InlineData("GET", 1)]
-		public async Task ValidCityWithBadDataReturnsNotFound(string method, int? cityId = null)
-		{
-			//Arrange
-			var request = new HttpRequestMessage(new HttpMethod(method), $"api/Weather/ForCity/{cityId}");
-
-			//Act
-			var response = await _client.SendAsync(request);
-
-			//Assert
-			var responseText = await response.Content.ReadAsStringAsync();
-			Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
-			Assert.Equal("Geographic information for city not found.", responseText);
-		}
-
-		[Theory]
-		[InlineData("GET", 0)]
 		public async Task ValidCityGetsWeatherResult(string method, int? cityId = null)
 		{
 			//Arrange

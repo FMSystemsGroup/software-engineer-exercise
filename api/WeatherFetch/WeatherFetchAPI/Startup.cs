@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,8 +31,12 @@ namespace WeatherFetchAPI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+			var appSettingsSection = Configuration.GetSection("AppSettings");
+			var appSettings = appSettingsSection.Get<AppSettings>();
+			services.Configure<AppSettings>(appSettingsSection);
 			services.AddSingleton<IConfiguration>(Configuration);
+			services.AddDbContext<WeatherFetchContext>(options =>
+				options.UseSqlite($"Data Source={appSettings.DatabaseFileName}"));
 			var corsOrigin = Configuration.GetValue<string>("AllowedCORS");
 			services.AddCors(options =>
 			{

@@ -16,10 +16,12 @@ namespace WeatherFetchAPI.Controllers
 	{
 		private readonly IOptions<AppSettings> _appSettings;
 		private readonly ILogger _logger;
+		private readonly WeatherFetchContext _context;
 
-		public WeatherController(IOptions<AppSettings> settings, ILogger<WeatherController> logger) {
+		public WeatherController(IOptions<AppSettings> settings, ILogger<WeatherController> logger, WeatherFetchContext context) {
 			_appSettings = settings;
 			_logger = logger;
+			_context = context;
 		}
 
 		// This could be a POST as well. In a way, it is creating an object from the
@@ -30,8 +32,8 @@ namespace WeatherFetchAPI.Controllers
 		{
 			_logger.LogInformation($"Get weather for city with id {cityId} called.");
 			//Find the city the user requested by its id
-			var chosenCity = CityHelper.GetCityById(cityId, _appSettings.Value.Cities);
-			if (chosenCity.id == -1)
+			var chosenCity = _context.Cities.FirstOrDefault(c => c.id == cityId);
+			if (chosenCity == null)
 			{
 				_logger.LogError($"City not found for id {cityId}.");
 				return NotFound("City not found.");
@@ -42,19 +44,18 @@ namespace WeatherFetchAPI.Controllers
 				var helper = new WeatherHelper();
 				//DarkSky requires the lat/lng of the city so we need to get
 				//that using the city and state from a geocoding service
-				var geoData = helper.GetForwardGeocodeForCity(chosenCity.Name, chosenCity.State, _appSettings.Value.OpenCageApiKey);
-				if (geoData.Results.Count() < 1) {
-					_logger.LogError($"Geographic information not found for {chosenCity.Name}, {chosenCity.State}.");
-					return NotFound("Geographic information for city not found.");
+				if (String.IsNullOrEmpty(chosenCity.OlsonTimeZone))
+				{
+					var cityHelper = new CityHelper(_logger, _context);
+					chosenCity = cityHelper.GetForwardGeocodeForCity(chosenCity, _appSettings.Value.OpenCageApiKey);
 				}
 
-				var firstResult = geoData.Results.First();
 				var dateToCheck = DateTime.Parse(_appSettings.Value.DateToCheck);
-				var dateToCheckInUtc = helper.GetUtcVersionOfDate(firstResult.Annotations.Timezone.Name, dateToCheck); ;
+				var dateToCheckInUtc = helper.GetUtcVersionOfDate(chosenCity.OlsonTimeZone, dateToCheck); ;
 				var unixDateTime = helper.GetUnixTimeStampForDate(dateToCheckInUtc);
 
-				var body = await helper.GetWeatherForCityAtTime(firstResult.Geometry.Latitude,
-					firstResult.Geometry.Longitude,
+				var body = await helper.GetWeatherForCityAtTime(chosenCity.Latitude,
+					chosenCity.Longitude,
 					unixDateTime,
 					_appSettings.Value.ApiKey);
 				return body;

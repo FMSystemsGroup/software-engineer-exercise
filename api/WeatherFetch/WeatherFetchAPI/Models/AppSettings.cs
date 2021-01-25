@@ -8,5 +8,6 @@ namespace WeatherFetchAPI.Models
 		public string ApiKey { get; set; }
 		public string OpenCageApiKey { get; set; }
 		public string DateToCheck { get; set; }
+		public string DatabaseFileName { get; set; }
 	}
 }

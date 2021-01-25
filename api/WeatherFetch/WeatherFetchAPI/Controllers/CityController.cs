@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using WeatherFetchAPI.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,17 +14,35 @@ namespace WeatherFetchAPI.Controllers
 	public class CityController : ControllerBase
 	{
 		private readonly IOptions<AppSettings> _appSettings;
+		private readonly ILogger _logger;
+		private readonly WeatherFetchContext _context;
 
-		public CityController(IConfiguration configuration, IOptions<AppSettings> settings) {
+		public CityController(IOptions<AppSettings> settings, ILogger<CityController> logger, WeatherFetchContext context) {
+			_context = context;
 			_appSettings = settings;
+			_logger = logger;
 		}
 
 		// GET: api/<CityController>
 		[HttpGet]
 		public IEnumerable<City> Get()
 		{
-			var cities = _appSettings.Value.Cities;
-			return cities;
+			var cityList =  _context.Cities.ToList();
+
+			//if there are no cities in the database, populate it with the app settings
+			if (cityList.Count < 1)
+			{
+				_logger.LogInformation("Populating cities from app settings.");
+				foreach (var city in _appSettings.Value.Cities)
+				{
+					_context.Cities.Add(city);
+					_context.SaveChanges();
+					cityList.Add(city);
+				}
+
+			}
+
+			return cityList;
 		}
 	}
 }

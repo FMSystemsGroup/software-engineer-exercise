@@ -10,19 +10,20 @@
 	"AppSettings": {
 		"Cities": [
 			{
-				"id": 0,
+				"id": 1,
 				"Name": "City Name",
 				"State": "State Code"
 			},
 			{
-				"id": 1,
+				"id": 2,
 				"Name": "Some City",
 				"State": "MI"
 			}
 		],
 		"DateToCheck": "Date to check string", //for the date and time you want checked e.g. 2018-07-04 12:00:00
 		"ApiKey": "DarkSky API Key Here",
-		"OpenCageApiKey": "OpenCage API Key Here"
+		"OpenCageApiKey": "OpenCage API Key Here",
+		"DatabaseFileName": "NameOfDatabseFile.db"
 	},
 	"AllowedCORS": "Domain URL that this application will allow CORS calls from"
 }

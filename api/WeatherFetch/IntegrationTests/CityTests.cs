@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace IntegrationTests
 {
@@ -19,13 +22,13 @@ namespace IntegrationTests
 		public CityTests()
 		{
 			var server = new TestServer(new WebHostBuilder()
-				.UseEnvironment("Integration")
+				.UseEnvironment("Development")
 				.UseStartup<Startup>());
 			_client = server.CreateClient();
 		}
 
 		[Theory]
-		[InlineData("GET", 2)]
+		[InlineData("GET", 4)]
 		public async Task CityListCount(string method, int? resultCount = null)
 		{
 			//Arrange

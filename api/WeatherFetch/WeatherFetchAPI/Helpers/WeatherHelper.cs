@@ -11,15 +11,6 @@ namespace WeatherFetchAPI.Helpers
 		private readonly string _darkSkyUri = "https://api.darksky.net/forecast";
 
 		/***
-		 * Use the OpenCage API to get the forward geocode info for a given city/state
-		 */
-		public GeocoderResponse GetForwardGeocodeForCity(string cityName, string cityStateCode, string openCageKey)
-		{
-			var geocoder = new Geocoder(openCageKey);
-			return geocoder.Geocode($"{cityName}, {cityStateCode}");
-		}
-
-		/***
 		 * Use the DarkSky API to get the weather for a given latitude, longitude and unix time stamp
 		 */
 		public async Task<string> GetWeatherForCityAtTime(double lat, double lon, long unixTime, string apiKey)
