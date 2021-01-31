@@ -1,0 +1,161 @@
+﻿@page "/"
+
+
+@using FMSystems.Shared.DTO
+@using System.Text;
+@using System.Text.Json;
+
+@inject HttpClient Http
+
+
+<h1>Weather forecast for Noon on July 4, 2018</h1>
+
+@if (Cities == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @if (ApiKeyIsAvailable == false)
+    {
+        <div class="row row-container-elements">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="apikey">Api Key</label>
+                    <input id="apikey" @bind-value="@ApiKey" title="Enter Api Key" class="form-control">
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row row-container-elements">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="apikey">Date</label>
+                <input id="apikey" @bind-value="@DateValue" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        @if (Cities != null)
+        {
+            <select id="city-select" name="citySselect" @onchange="OnCitySelected" class="form-control">
+                <option value="0">Select A City</option>
+                @foreach (var city in Cities)
+                {
+                    <option value="@city.Id">@city.Display</option>
+                }
+            </select>
+        }
+    </div>
+
+    <br />
+
+
+    <div class="row row-container-elements">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="forecast-select">Forecast</label>
+                <textarea id="forecast-select" @bind="@Summary" class="form-control" rows="5" cols="50"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+
+
+}
+
+@code {
+
+    public string Summary = "";
+    public string ApiKey { get; set; }
+    public string DefaultDateValue { get; set; } = "7/4/2018 12:00:00 PM";
+    public string DateValue { get; set; }
+
+    public bool ApiKeyIsAvailable = false;
+
+    private List<City> Cities;
+
+    private JsonSerializerOptions defaultJsonSerializerOptions =>  new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            DateValue = DefaultDateValue;
+            HttpResponseMessage response = await Http.GetAsync("WeatherForecast/GetCityList");
+            Cities = await Deserialize<List<City>>(response, defaultJsonSerializerOptions);
+
+            response = await Http.GetAsync("Admin/IsKeyAvailable");
+            ApiKeyIsAvailable = await Deserialize<Boolean>(response, defaultJsonSerializerOptions);
+
+
+
+        }
+        catch (Exception ex)
+        {
+
+            Summary = ex.Message;
+        }
+    }
+
+    public async Task OnCitySelected(ChangeEventArgs e)
+    {
+        int cityId = Convert.ToInt32(e.Value);
+
+        if (cityId > 0)
+        {
+            try
+            {
+                DateTime date = Convert.ToDateTime(DateValue);
+
+                HttpResponseMessage response = await Http.GetAsync(string.Format("WeatherForecast/GetCityWeather?id={0}&date={1}&apikey={2}", cityId, date, ApiKey));
+                var forecast = await Deserialize<WeatherForecast>(response, defaultJsonSerializerOptions);
+
+                if (forecast != null)
+                {
+                    Summary = forecast.Display;
+                }
+                else
+                {
+                    throw new Exception("Invalid Forecast");
+                }
+            }
+            catch (Exception ex)
+            {
+                Summary = ex.Message;
+            }
+        }
+
+    }
+
+    private async Task<T> Deserialize<T>(HttpResponseMessage httpResponse, JsonSerializerOptions options)
+    {
+        var responseString = await httpResponse.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<T>(responseString, options);
+    }
+
+}
+
+<style>
+    select {
+        border: none;
+        padding: 1em 1em 1em 1em;
+        margin: 0;
+        width: 15em;
+        max-width: 15em;
+    }
+
+    textarea {
+        width: 25em;
+        max-width: 25em;
+    }
+
+    .dropdown {
+        width: 20em;
+    }
+</style>

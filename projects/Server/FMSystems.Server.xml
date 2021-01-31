@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FMSystems.Server</name>
+    </assembly>
+    <members>
+        <member name="M:FMSystems.Server.Controllers.AdminController.IsKeyAvailable">
+            <summary>
+            Checks to see if the Dark Sky API key is configured
+            </summary>
+            <returns>true if the key was configured in a key vault or appsettings</returns>
+        </member>
+        <member name="M:FMSystems.Server.Controllers.WeatherForecastController.GetCityList">
+            <summary>
+            Retrieve a list of cities
+            </summary>
+            <returns>IEnumerable City List</returns>
+        </member>
+        <member name="M:FMSystems.Server.Controllers.WeatherForecastController.GetCityWeather(System.Int32,System.DateTime,System.String)">
+            <summary>
+            Gets a Weather Forecast for specifc hour in the day
+            </summary>
+            <param name="id"></param>
+            <param name="date"></param>
+            <param name="apikey"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
