@@ -4,9 +4,16 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using TimeZoneConverter;
 
-namespace WeatherFetchAPI.Helpers
+namespace WeatherFetchAPI.Dependencies
 {
-	public class WeatherHelper
+	public interface IWeatherHelper
+	{
+		public Task<string> GetWeatherForCityAtTime(double lat, double lon, long unixTime, string apiKey);
+		public DateTime GetUtcVersionOfDate(string locationName, DateTime time);
+		public long GetUnixTimeStampForDate(DateTime dateToConvert);
+	}
+
+	public class WeatherHelper : IWeatherHelper
 	{
 		private readonly string _darkSkyUri = "https://api.darksky.net/forecast";
 

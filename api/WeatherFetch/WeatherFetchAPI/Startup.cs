@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WeatherFetchAPI.Dependencies;
 using WeatherFetchAPI.Models;
 
 namespace WeatherFetchAPI
@@ -38,6 +39,8 @@ namespace WeatherFetchAPI
 			services.AddDbContext<WeatherFetchContext>(options =>
 				options.UseSqlite($"Data Source={appSettings.DatabaseFileName}"));
 			var corsOrigin = Configuration.GetValue<string>("AllowedCORS").Split(',');
+			services.AddScoped<ICityHelper, CityHelper>();
+			services.AddScoped<IWeatherHelper, WeatherHelper>();
 			services.AddCors(options =>
 			{
 				options.AddPolicy(name: AllowedOrigins,

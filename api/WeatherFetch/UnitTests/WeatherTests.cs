@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using WeatherFetchAPI.Helpers;
+using WeatherFetchAPI.Dependencies;
 using OpenCage.Geocode;
 
 namespace UnitTests
