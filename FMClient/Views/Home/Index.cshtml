@@ -1,0 +1,146 @@
+﻿@using FMClient.Models
+
+@using System.Text.Encodings.Web;
+
+@model ViewModel
+@*@{
+          ViewBag.Title = "Home Page";
+     }*@
+
+@{
+     Layout = "_Layout";
+}
+
+<header>
+     <h1>Weather By City</h1>
+</header>
+
+<body onload="ToggleKeyEntryBox()">
+     <div class="wrapper">
+
+          <!--Key-->
+          <div id="keydiv">
+               <label for="lblKey">Access key : </label>
+               <input class="form-control" type="text" id="key" />
+          </div>
+
+          <!--Date-->
+          <div>
+               <label for="lblDate">Change Date : </label>
+               <input class="form-control" type="datetime-local" date-val="true" data-val-required="This is required" id="date" name="Date" value="2018-07-04T12:00">
+          </div>
+
+          <!--Cities-->
+          <div>
+               <label for="lblKey">Select City: </label>
+               @Html.DropDownListFor(m => m.CityOptions.StateCode, new SelectList(Model.CityOptions.Cities, "StateCode", "cityName"), "Select City", new { @class = "form-control" })
+          </div>
+
+          @*<div>
+                    Selected City: <label id="lbltxt"></label>
+                    Selected State: <label id="lblid"></label>
+               </div>*@
+
+     </div>
+     <br />
+
+     <!--Data-->
+     <table class="table table-bordered" id="weatherDataTable">
+          <tr>
+               <th>Item</th>
+               <th>Value</th>
+          </tr>
+     </table>
+
+     <script type="text/javascript">
+
+          $(
+               function () {
+
+                    var Table = document.getElementById("weatherDataTable");
+
+                    //Dropdownlist Selectedchange event
+                    $('#CityOptions_StateCode').change(function () {
+
+                         Table.innerHTML = "";
+
+                         var selectedCity = $("#CityOptions_StateCode option:selected").text()
+                         var latitude
+                         var longitude
+
+                         //Show dropdownlist selected item value
+                         //$("#lblid").text($("#CityOptions_StateCode").val());
+
+                         //Get the coordinates
+                         var cityOjbects = JSON.parse('@Html.Raw(Json.Serialize(Model.CityObjects))');
+                         for (var i = 0; i < cityOjbects.length; i++) {
+                              var item = cityOjbects[i];
+                              if (cityOjbects[i].cityName === selectedCity) {
+                                   longitude = cityOjbects[i].longitude;
+                                   latitude = cityOjbects[i].latitude;
+                                   break;
+                              }
+                         }
+
+                         //Get variables data to compose url
+                         var strKeyFromConfig =   @Html.Raw(Model.dsKey);
+                         var strKey = document.getElementById("key").value;
+
+                         if (strKeyFromConfig != 'manual') {
+                              strKey = strKeyFromConfig;
+                         } 
+
+                         var dateSelected = document.getElementById("date").value;
+                         var date = new Date(dateSelected);
+                         var unixTimeStamp = Math.floor(date.getTime() / 1000);
+
+                         var strUrl = "https://api.darksky.net/forecast/" + strKey + "/" + latitude + "," + longitude + "," + unixTimeStamp + "?exclude=daily,hourly,flags";
+
+                         //Get weather data and add it to the table
+                         $.ajax({
+                              type: "GET",
+                              url: strUrl,
+                              contentType: "application/json",
+                              dataType: "jsonp",
+                              success: function (resultData) {
+
+                                   var hdr = "tr>" + "<th>" + "Item" + "</th>" + "<th>" + "Value" + "</th>" + "</tr>";
+                                   $('#weatherDataTable').append(hdr);
+
+                                            for (c in resultData.currently) {
+                                                 var key = c;
+                                                 var val = resultData.currently[c];
+
+                                                 c = c.charAt(0).toUpperCase() + c.slice(1);
+                                                 c = c.replace(/([A-Z])/g, ' $1').trim();
+
+                                                 if (key != "time" && key != "icon") {
+                                                      var rows = "<tr>" + "<td id='RegdNo'>" + c + "</td>" + "<td id='Name'>" + val + "</td>" + "</tr>";
+                                                      $('#weatherDataTable').append(rows);
+                                                 }
+                                            }
+                                   console.log(resultData);
+                              },
+                              failure: function (resultData) { alert(resultData.responseText); },
+                                   error: function(resultData) { alert(resultData.responseText);}
+                         }
+                         );
+
+                    }
+                    )
+               }
+          )
+
+     </script>
+
+     <script>
+          function ToggleKeyEntryBox() {
+                var strKeyFromConfig =   @Html.Raw(Model.dsKey);
+               if (strKeyFromConfig != 'manual') {
+                    keydiv.style.display = "none";
+               }
+          }
+     </script>
+
+</body>
+

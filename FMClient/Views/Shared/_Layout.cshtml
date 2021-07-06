@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>@ViewData["Title"] - Weather Report</title>
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="~/css/site.css" />
+     <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+     <style>
+          .wrapper {
+               display: grid;
+          }
+     </style>
+</head>
+
+<body>
+     <div class="container-fluid">
+          @RenderBody()
+     </div>
+
+     <div class="container body-content">
+          @RenderBody()
+          <hr />
+          <footer>
+               @{
+                    string msg2 = "<a href=\"http://darksky.net/poweredby\">Powered by Dark Sky</a>.";
+                    @Html.Raw(msg2)
+               }
+          </footer>
+     </div>
+</body>
+</html>
