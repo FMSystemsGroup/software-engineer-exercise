@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OvIIQqM1EEM2crp2RgJqmuRj1vb4SmhKzY2uXHfNayDatzO5Z5a6jShsMOkr0Gl2dG+vzw82iiK6R0yPipjNng==",
+  "dgSpecHash": "qWFvj+xU+BoeCnQf032GF2CPz+If62iH57P8tS5+X7Q0bTERMdC7is9OW5t83xqScp2AoOru79H07BvsO6A3HQ==",
   "success": true,
-  "projectFilePath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FmApi\\FmApi.csproj",
+  "projectFilePath": "C:\\DemoForFM\\software-engineer-exercise\\FmApi\\FmApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fredy\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\fredy\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

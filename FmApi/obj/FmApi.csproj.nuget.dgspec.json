@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DemoForFM\\FMNETCoreAPIDemo\\FmApi\\FmApi.csproj": {}
+    "C:\\DemoForFM\\software-engineer-exercise\\FmApi\\FmApi.csproj": {}
   },
   "projects": {
-    "C:\\DemoForFM\\FMNETCoreAPIDemo\\FmApi\\FmApi.csproj": {
+    "C:\\DemoForFM\\software-engineer-exercise\\FmApi\\FmApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FmApi\\FmApi.csproj",
+        "projectUniqueName": "C:\\DemoForFM\\software-engineer-exercise\\FmApi\\FmApi.csproj",
         "projectName": "FmApi",
-        "projectPath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FmApi\\FmApi.csproj",
+        "projectPath": "C:\\DemoForFM\\software-engineer-exercise\\FmApi\\FmApi.csproj",
         "packagesPath": "C:\\Users\\fredy\\.nuget\\packages\\",
-        "outputPath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FmApi\\obj\\",
+        "outputPath": "C:\\DemoForFM\\software-engineer-exercise\\FmApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

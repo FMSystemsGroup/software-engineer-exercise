@@ -13,24 +13,29 @@ namespace FMClient.Controllers
 {
      public class HomeController : Controller
      {
-          //test
+        
           private IConfiguration configuration;
           public HomeController(IConfiguration config)
           {
                configuration = config;
           }
-          //test
+          
 
           public async Task<IActionResult> Index()
           {
-               string port = configuration.GetSection("FMClientConfig").GetSection("FmApiPort").Value;
+               //string port = configuration.GetSection("FMClientConfig").GetSection("FmApiPort").Value;
+               string fmApiUrl = configuration.GetSection("FMClientConfig").GetSection("FmApiUrl").Value;
                string dsKey = configuration.GetSection("FMClientConfig").GetSection("DSKey").Value;
-               string url = "https://localhost:" + port + "/api/cities";
+            
+               //this hardcoded url will not work if depoyed to a remote host
+               //string url = "https://localhost:" + port + "/api/cities";
+               //string url = "https://fmapidemo.azurewebsites.net/api/cities";
 
                List<City> cities = new List<City>();
                using (var httpClient = new HttpClient())
                {
-                    using (var response = await httpClient.GetAsync(url))
+                    //using (var response = await httpClient.GetAsync(url))
+                    using (var response = await httpClient.GetAsync(fmApiUrl))
                     {
                          string apiResponse = await response.Content.ReadAsStringAsync();
                          cities = JsonConvert.DeserializeObject<List<City>>(apiResponse);

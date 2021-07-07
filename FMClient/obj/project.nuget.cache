@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8fFvkZC0gmEs4NHPNqSahmk5kZ/UJNKE1nUijtFSZkrXqlPiNEQLr9lJS8iAfTCCwPKgIozyvEJDS/bv6BCj/w==",
+  "dgSpecHash": "6Acpgq4BFY/VtS98uMMq9ywUIuIDzXbErd4ngOX5g/bs1NalmBA86Lba3ix7aW9WymjGz9RunK/YxHqEOkNGJQ==",
   "success": true,
-  "projectFilePath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMClient\\FMClient.csproj",
+  "projectFilePath": "C:\\DemoForFM\\software-engineer-exercise\\FMClient\\FMClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fredy\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

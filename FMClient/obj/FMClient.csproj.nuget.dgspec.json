@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMClient\\FMClient.csproj": {}
+    "C:\\DemoForFM\\software-engineer-exercise\\FMClient\\FMClient.csproj": {}
   },
   "projects": {
-    "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMClient\\FMClient.csproj": {
+    "C:\\DemoForFM\\software-engineer-exercise\\FMClient\\FMClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMClient\\FMClient.csproj",
+        "projectUniqueName": "C:\\DemoForFM\\software-engineer-exercise\\FMClient\\FMClient.csproj",
         "projectName": "FMClient",
-        "projectPath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMClient\\FMClient.csproj",
+        "projectPath": "C:\\DemoForFM\\software-engineer-exercise\\FMClient\\FMClient.csproj",
         "packagesPath": "C:\\Users\\fredy\\.nuget\\packages\\",
-        "outputPath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMClient\\obj\\",
+        "outputPath": "C:\\DemoForFM\\software-engineer-exercise\\FMClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

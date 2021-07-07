@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y/ZAWOEtDPJ+4R/X4fEW3YixoAmGHqJTdLPlYAiKU3G1RXvATZb3HcUVn3p8yp5AJY8p+3B0GLKyb9zsApL8JQ==",
+  "dgSpecHash": "U7031N7UEOYFeI/gSx9xEa3zbwcupewljw1nsecz27yjAIZE1WcwT8ExcESrI5cWKlnk7W256Hx6Y/SognWaDw==",
   "success": true,
-  "projectFilePath": "C:\\DemoForFM\\FMNETCoreAPIDemo\\FMUnitTest\\FMUnitTest.csproj",
+  "projectFilePath": "C:\\DemoForFM\\software-engineer-exercise\\FMUnitTest\\FMUnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fredy\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
     "C:\\Users\\fredy\\.nuget\\packages\\microsoft.codecoverage\\16.7.1\\microsoft.codecoverage.16.7.1.nupkg.sha512",
