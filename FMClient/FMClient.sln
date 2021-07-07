@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMClient", "FMClient.csproj", "{98CA8EA8-6821-4766-BA4C-6E1121EE6853}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98CA8EA8-6821-4766-BA4C-6E1121EE6853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CA8EA8-6821-4766-BA4C-6E1121EE6853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CA8EA8-6821-4766-BA4C-6E1121EE6853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CA8EA8-6821-4766-BA4C-6E1121EE6853}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7F534FA-E95C-40B8-BB14-3E45157F7E37}
+	EndGlobalSection
+EndGlobal
