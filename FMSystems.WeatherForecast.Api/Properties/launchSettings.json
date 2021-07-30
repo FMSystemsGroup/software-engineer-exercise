@@ -16,7 +16,7 @@
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
       },
-      "FMSystems.WeatherForcast.Api": {
+      "FMSystems.WeatherForecast.Api": {
         "commandName": "Project",
         "dotnetRunMessages": "true",
         "launchBrowser": true,

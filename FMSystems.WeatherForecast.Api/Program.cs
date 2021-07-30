@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace FMSystems.WeatherForcast.Api
+namespace FMSystems.WeatherForecast.Api
 {
     public class Program
     {

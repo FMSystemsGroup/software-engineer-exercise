@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FMSystems.WeatherForcast.Domain;
+using FMSystems.WeatherForecast.Domain;
 using FMSystems.WeatherForecast.Application;
 
-namespace FMSystems.WeatherForcast.Api.Controllers
+namespace FMSystems.WeatherForecast.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -24,7 +24,7 @@ namespace FMSystems.WeatherForcast.Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<FMSystems.WeatherForcast.Domain.WeatherForecast> Get()
+        public IEnumerable<FMSystems.WeatherForecast.Domain.WeatherForecast> Get()
         {
             return _forecastService.GetForecasts();
         }

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace FMSystems.WeatherForcast.Web
+namespace FMSystems.WeatherForecast.Web
 {
     public class Program
     {

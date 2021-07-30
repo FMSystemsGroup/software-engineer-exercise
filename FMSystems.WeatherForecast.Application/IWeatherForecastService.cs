@@ -4,6 +4,6 @@ namespace FMSystems.WeatherForecast.Application
 {
     public interface IWeatherForecastService
     {
-        IEnumerable<WeatherForcast.Domain.WeatherForecast> GetForecasts();
+        IEnumerable<WeatherForecast.Domain.WeatherForecast> GetForecasts();
     }
 }

@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FMSystems.WeatherForcast.Domain\FMSystems.WeatherForcast.Domain.csproj" />
+    <ProjectReference Include="..\FMSystems.WeatherForecast.Domain\FMSystems.WeatherForecast.Domain.csproj" />
   </ItemGroup>
 
 </Project>

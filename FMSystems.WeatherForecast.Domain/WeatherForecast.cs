@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FMSystems.WeatherForcast.Domain
+namespace FMSystems.WeatherForecast.Domain
 {
     public class WeatherForecast
     {
