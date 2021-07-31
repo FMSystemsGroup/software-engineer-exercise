@@ -1,5 +1,6 @@
 ﻿using FMSystems.WeatherForecast.Domain;
-using FMSystems.WeatherForecast.Infrastructure.DBContexts;
+using FMSystems.WeatherForecast.Domain.Entity;
+using FMSystems.WeatherForecast.Infrastructure.DBContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace FMSystems.WeatherForecast.Infrastructure.Repository
+namespace FMSystems.WeatherForecast.Infrastructure.Db.Repository
 {
     public class GenericDbRepository<TEntity> : IDisposable, IGenericDbRepository<TEntity> where TEntity : BaseEntity
     {
@@ -24,20 +25,13 @@ namespace FMSystems.WeatherForecast.Infrastructure.Repository
 
         public async virtual Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "")
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
         {
             IQueryable<TEntity> query = dbSet;
 
             if (filter != null)
             {
                 query = query.Where(filter);
-            }
-
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
             }
 
             if (orderBy != null)

@@ -1,4 +1,5 @@
-﻿using FMSystems.WeatherForecast.Services;
+﻿using FMSystems.WeatherForecast.Domain.Service;
+using FMSystems.WeatherForecast.Services;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection

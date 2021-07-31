@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FMSystems.WeatherForecast.Domain;
-using FMSystems.WeatherForecast.Infrastructure.Repository;
+using FMSystems.WeatherForecast.Infrastructure.Db.Repository;
 using Microsoft.AspNetCore.Http;
-using FMSystems.WeatherForecast.Services;
+using FMSystems.WeatherForecast.Domain.Service;
+using FMSystems.WeatherForecast.Domain.Entity;
 
 namespace FMSystems.WeatherForecast.Api.Controllers
 {
@@ -27,10 +26,9 @@ namespace FMSystems.WeatherForecast.Api.Controllers
             _genericDbRepository = genericDbRepository ?? throw new ArgumentNullException(nameof(genericDbRepository));
         }
 
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
-        public async Task<IEnumerable<FMSystems.WeatherForecast.Domain.WeatherForecast>> Get()
+        public async Task<IEnumerable<FMSystems.WeatherForecast.Domain.Entity.WeatherForecast>> Get()
         {
             return _forecastService.GetForecasts();
         }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FMSystems.WeatherForecast.Domain
+namespace FMSystems.WeatherForecast.Domain.Entity
 {
     [Table("City")]
     public class City : BaseEntity

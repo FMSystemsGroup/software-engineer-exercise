@@ -14,7 +14,6 @@ namespace FMSystems.WeatherForecast.Api
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build()
-                .RunEntityFrameworkMigrations()
                 .Run();
         }
 

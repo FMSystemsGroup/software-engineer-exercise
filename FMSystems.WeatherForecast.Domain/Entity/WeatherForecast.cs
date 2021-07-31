@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FMSystems.WeatherForecast.Domain
+namespace FMSystems.WeatherForecast.Domain.Entity
 {
     public class WeatherForecast
     {

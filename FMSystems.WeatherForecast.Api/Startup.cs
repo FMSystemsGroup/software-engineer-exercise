@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
-using FMSystems.WeatherForecast.Infrastructure.DBContexts;
-using FMSystems.WeatherForecast.Infrastructure.Repository;
+using FMSystems.WeatherForecast.Infrastructure.Db.Context;
+using FMSystems.WeatherForecast.Infrastructure.Db.Repository;
 using FMSystems.WeatherForecast.Domain;
 using Microsoft.EntityFrameworkCore;
+using FMSystems.WeatherForecast.Infrastructure.DBContext;
+using FMSystems.WeatherForecast.Domain.Entity;
 
 namespace FMSystems.WeatherForecast.Api
 {

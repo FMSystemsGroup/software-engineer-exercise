@@ -1,11 +1,12 @@
 ﻿using FMSystems.WeatherForecast.Domain;
+using FMSystems.WeatherForecast.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FMSystems.WeatherForecast.Infrastructure.SeedData
+namespace FMSystems.WeatherForecast.Infrastructure.Db.SeedData
 {
     public static class StaticCities
     {
