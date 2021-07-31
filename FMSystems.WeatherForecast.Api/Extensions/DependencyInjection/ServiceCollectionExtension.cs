@@ -1,4 +1,5 @@
 ﻿using FMSystems.WeatherForecast.Domain.Repository;
+using FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl;
 using FMSystems.WeatherForecast.Infrastructure.Db.Context;
 using FMSystems.WeatherForecast.Infrastructure.Db.RepositoryImpl;
 using FMSystems.WeatherForecast.Infrastructure.DBContext;
@@ -21,9 +22,15 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(services));
             }
 
+            //Database
             services.AddDbContext<WeatherForecastDbContext>(options => options.UseInMemoryDatabase(":memory:"));
-            services.AddScoped<ICityRepository, CityRepository>();
+
+            //DB context
             services.AddScoped<IWeatherForecastDbContext, WeatherForecastDbContext>();
+
+            //Services.
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IForecastRepository, ForecastRepository>();
 
             return services;
         }
