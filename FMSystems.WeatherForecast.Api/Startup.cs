@@ -6,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using FMSystems.WeatherForecast.Infrastructure.DBContexts;
+using FMSystems.WeatherForecast.Infrastructure.Repository;
+using FMSystems.WeatherForecast.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace FMSystems.WeatherForecast.Api
 {
@@ -25,6 +29,10 @@ namespace FMSystems.WeatherForecast.Api
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddWeatherForecastApplication();
+
+            services.AddDbContext<WeatherForecastDbContext>(options => options.UseSqlServer("Server=localhost;Database=weatherforecast;Integrated Security=False;User ID=sa;Password=Password0!;MultipleActiveResultSets=True"));
+            services.AddScoped<IGenericDbRepository<City>, GenericDbRepository<City>>();
+            services.AddScoped<IWeatherForecastDbContext, WeatherForecastDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

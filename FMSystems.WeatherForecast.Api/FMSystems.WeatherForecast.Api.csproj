@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FMSystems.WeatherForecast.Infrastructure\FMSystems.WeatherForecast.Infrastructure.csproj" />
     <ProjectReference Include="..\FMSystems.WeatherForecast.Web\FMSystems.WeatherForecast.Web.csproj" />
     <ProjectReference Include="..\FMSystems.WeatherForecast.Domain\FMSystems.WeatherForecast.Domain.csproj" />
     <ProjectReference Include="..\FMSystems.WeatherForecast.Application\FMSystems.WeatherForecast.Application.csproj" />
