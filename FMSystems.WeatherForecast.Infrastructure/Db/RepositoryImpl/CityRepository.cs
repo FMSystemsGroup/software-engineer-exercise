@@ -23,6 +23,6 @@ namespace FMSystems.WeatherForecast.Infrastructure.Db.RepositoryImpl
         }
 
         /// <inheritdoc/>
-        public async virtual Task<IEnumerable<City>> GetAllAsync() => await context.Cities.ToListAsync();
+        public async virtual Task<ICollection<City>> GetAllAsync() => await context.Cities.ToListAsync();
     }
 }

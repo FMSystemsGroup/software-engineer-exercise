@@ -1,24 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FMSystems.WeatherForecast.Domain.Entity
 {
+    /// <summary>
+    /// A city representation.
+    /// </summary>
     [Table("City")]
     public class City : BaseEntity
     {
+        /// <summary>
+        /// The city name.
+        /// </summary>
         [Required]
         public string Name { get; set; }
-        [Required]
+        /// <summary>
+        /// The state where the city is in.
+        /// </summary>
         public string State { get; set; }
+        /// <summary>
+        /// The country where the city is in.
+        /// </summary>
         [Required]
         public string Country { get; set; }
+        /// <summary>
+        /// The latitude.
+        /// </summary>
         [Required]
         public double Latitude { get; set; }
+        /// <summary>
+        /// The longitude.
+        /// </summary>
         [Required]
         public double Longitude { get; set; }
     }
