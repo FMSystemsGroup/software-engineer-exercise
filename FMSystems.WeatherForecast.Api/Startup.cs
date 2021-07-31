@@ -30,7 +30,7 @@ namespace FMSystems.WeatherForecast.Api
             services.AddRazorPages();
             services.AddWeatherForecastApplication();
 
-            services.AddDbContext<WeatherForecastDbContext>(options => options.UseSqlServer("Server=localhost;Database=weatherforecast;Integrated Security=False;User ID=sa;Password=Password0!;MultipleActiveResultSets=True"));
+            services.AddDbContext<WeatherForecastDbContext>(options => options.UseInMemoryDatabase(":memory:"));
             services.AddScoped<IGenericDbRepository<City>, GenericDbRepository<City>>();
             services.AddScoped<IWeatherForecastDbContext, WeatherForecastDbContext>();
         }

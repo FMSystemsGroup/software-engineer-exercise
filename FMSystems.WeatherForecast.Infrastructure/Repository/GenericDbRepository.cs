@@ -19,6 +19,7 @@ namespace FMSystems.WeatherForecast.Infrastructure.Repository
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();
+            this.context.Database.EnsureCreated();
         }
 
         public async virtual Task<IEnumerable<TEntity>> GetAsync(

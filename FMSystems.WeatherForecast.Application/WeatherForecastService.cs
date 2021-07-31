@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FMSystems.WeatherForecast.Application
+namespace FMSystems.WeatherForecast.Services
 {
     public class WeatherForecastService : IWeatherForecastService
     {

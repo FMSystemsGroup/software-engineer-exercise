@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FMSystems.WeatherForecast.Application
+namespace FMSystems.WeatherForecast.Services
 {
     public interface IWeatherForecastService
     {

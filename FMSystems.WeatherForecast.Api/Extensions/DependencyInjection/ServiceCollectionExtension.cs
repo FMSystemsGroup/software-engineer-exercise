@@ -1,4 +1,4 @@
-﻿using FMSystems.WeatherForecast.Application;
+﻿using FMSystems.WeatherForecast.Services;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection

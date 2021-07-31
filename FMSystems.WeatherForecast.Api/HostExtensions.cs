@@ -16,21 +16,21 @@ namespace FMSystems.WeatherForecast.Api
         {
             using var scope = host.Services.CreateScope();
 
-            try
-            {
-                Console.WriteLine("--> DB Migration - START <--");
-                scope.ServiceProvider.GetService<WeatherForecastDbContext>().Database.Migrate();
-                scope.ServiceProvider.GetService<WeatherForecastDbContext>().SaveChanges();
-                Console.WriteLine("MIGRATION_SUCCESS");
-                Console.WriteLine("--> DB Migration - END <--");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("--> DB Migration - FAIL <--");
-                scope.ServiceProvider.GetService<ILogger<Program>>().LogError(ex, "Failed Migration");
-                Console.WriteLine("MIGRATION_FAILURE");
-                throw;
-            }
+            //try
+            //{
+            //    Console.WriteLine("--> DB Migration - START <--");
+            //    scope.ServiceProvider.GetService<WeatherForecastDbContext>().Database.Migrate();
+            //    scope.ServiceProvider.GetService<WeatherForecastDbContext>().SaveChanges();
+            //    Console.WriteLine("MIGRATION_SUCCESS");
+            //    Console.WriteLine("--> DB Migration - END <--");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("--> DB Migration - FAIL <--");
+            //    scope.ServiceProvider.GetService<ILogger<Program>>().LogError(ex, "Failed Migration");
+            //    Console.WriteLine("MIGRATION_FAILURE");
+            //    throw;
+            //}
 
             return host;
         }

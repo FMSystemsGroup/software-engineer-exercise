@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.0.0
 MinimumVisualStudioVersion = 16.0.0.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMSystems.WeatherForecast.Application", "FMSystems.WeatherForecast.Application\FMSystems.WeatherForecast.Application.csproj", "{5F4146C3-463A-453A-8635-B81308E63516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMSystems.WeatherForecast.Services", "FMSystems.WeatherForecast.Application\FMSystems.WeatherForecast.Services.csproj", "{5F4146C3-463A-453A-8635-B81308E63516}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11321F96-7329-4F4D-B45D-9287627F2093}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,6 +18,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMSystems.WeatherForecast.Domain", "FMSystems.WeatherForecast.Domain\FMSystems.WeatherForecast.Domain.csproj", "{1BC7FC11-A57B-4514-B495-42787AF4FEC1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMSystems.WeatherForecast.Web", "FMSystems.WeatherForecast.Web\FMSystems.WeatherForecast.Web.csproj", "{D4EF67C4-D7D6-48FA-A4FD-2193C7660238}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A4FB2807-8F43-40E6-9FD1-EC17C0E022E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{64400B20-008D-4832-9982-4C5B4FAE1303}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B38A8620-96F4-47DB-81AC-CB0F7D7B09D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +98,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F4146C3-463A-453A-8635-B81308E63516} = {B38A8620-96F4-47DB-81AC-CB0F7D7B09D0}
+		{F026821E-DA29-4C36-B565-ECF043A54087} = {64400B20-008D-4832-9982-4C5B4FAE1303}
+		{9AE7E397-799B-4ECD-BB00-9EE462D4E0E2} = {A4FB2807-8F43-40E6-9FD1-EC17C0E022E8}
+		{1BC7FC11-A57B-4514-B495-42787AF4FEC1} = {B38A8620-96F4-47DB-81AC-CB0F7D7B09D0}
+		{D4EF67C4-D7D6-48FA-A4FD-2193C7660238} = {A4FB2807-8F43-40E6-9FD1-EC17C0E022E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C4FC1E0-613D-44E6-AC7A-A531F84E010A}
