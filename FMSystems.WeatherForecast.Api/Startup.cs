@@ -1,30 +1,49 @@
+using FMSystems.WeatherForecast.Api.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace FMSystems.WeatherForecast.Api
 {
+    /// <summary>
+    /// The .NET Core/.NET5 middleware configurations.
+    /// </summary>
     public class Startup
     {
+        private IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// The Startup constructor.
+        /// </summary>
+        /// <param name="configuration"><see cref="IConfiguration"/></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        /// </summary>
+        /// <param name="services">The services available in the application.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddWeatherForecastApplication();
+            services.AddSwagger();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"><see cref="IApplicationBuilder"/></param>
+        /// <param name="env"><see cref="IWebHostEnvironment"/></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -44,6 +63,8 @@ namespace FMSystems.WeatherForecast.Api
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCustomSwagger();
 
             app.UseEndpoints(endpoints =>
             {

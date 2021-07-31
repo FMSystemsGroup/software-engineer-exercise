@@ -8,6 +8,9 @@ using System;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// A services collection extension to encapulate the dependency injection operations.
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
         /// <summary>
