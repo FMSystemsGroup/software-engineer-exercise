@@ -3,12 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FMSystems.WeatherForecast.Infrastructure.Db.Context;
-using FMSystems.WeatherForecast.Infrastructure.Db.Repository;
-using FMSystems.WeatherForecast.Domain;
-using Microsoft.EntityFrameworkCore;
-using FMSystems.WeatherForecast.Infrastructure.DBContext;
-using FMSystems.WeatherForecast.Domain.Entity;
 
 namespace FMSystems.WeatherForecast.Api
 {
@@ -28,10 +22,6 @@ namespace FMSystems.WeatherForecast.Api
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddWeatherForecastApplication();
-
-            services.AddDbContext<WeatherForecastDbContext>(options => options.UseInMemoryDatabase(":memory:"));
-            services.AddScoped<IGenericDbRepository<City>, GenericDbRepository<City>>();
-            services.AddScoped<IWeatherForecastDbContext, WeatherForecastDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,12 +1,11 @@
-﻿using FMSystems.WeatherForecast.Domain;
-using FMSystems.WeatherForecast.Domain.Service;
+﻿using FMSystems.WeatherForecast.Domain.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FMSystems.WeatherForecast.Services
+namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
 {
-    public class WeatherForecastService : IWeatherForecastService
+    public class ForecastRepository : IForecastRepository
     {
         private static readonly string[] Summaries = new[]
         {

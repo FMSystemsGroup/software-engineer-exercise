@@ -14,9 +14,7 @@ namespace FMSystems.WeatherForecast.Infrastructure.DBContext
 {
     public class WeatherForecastDbContext : DbContext, IWeatherForecastDbContext
     {
-        public WeatherForecastDbContext(DbContextOptions options) : base(options)
-        {
-        }
+        public WeatherForecastDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<City> Cities { get; set; }
 

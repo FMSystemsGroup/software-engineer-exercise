@@ -1,5 +1,8 @@
-﻿using FMSystems.WeatherForecast.Domain.Service;
-using FMSystems.WeatherForecast.Services;
+﻿using FMSystems.WeatherForecast.Domain.Repository;
+using FMSystems.WeatherForecast.Infrastructure.Db.Context;
+using FMSystems.WeatherForecast.Infrastructure.Db.RepositoryImpl;
+using FMSystems.WeatherForecast.Infrastructure.DBContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -18,7 +21,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddTransient<IWeatherForecastService, WeatherForecastService>();
+            services.AddDbContext<WeatherForecastDbContext>(options => options.UseInMemoryDatabase(":memory:"));
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IWeatherForecastDbContext, WeatherForecastDbContext>();
 
             return services;
         }

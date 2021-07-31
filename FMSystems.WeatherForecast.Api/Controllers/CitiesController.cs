@@ -5,30 +5,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FMSystems.WeatherForecast.Domain.Repository;
+using FMSystems.WeatherForecast.Domain.Entity;
 
 namespace FMSystems.WeatherForecast.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class CitiesController: ControllerBase
     {
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IForecastRepository _forecastRepository;
         private readonly ICityRepository _cityRepository;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IForecastRepository forecastRepository, ICityRepository cityRepository)
+        public CitiesController(ILogger<WeatherForecastController> logger, ICityRepository cityRepository)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _forecastRepository = forecastRepository ?? throw new ArgumentNullException(nameof(forecastRepository));
             _cityRepository = cityRepository ?? throw new ArgumentNullException(nameof(cityRepository));
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet]
-        public async Task<IEnumerable<FMSystems.WeatherForecast.Domain.Entity.WeatherForecast>> Get()
+        public async Task<IEnumerable<City>> Get()
         {
-            return _forecastRepository.GetForecasts();
+            return await _cityRepository.GetAllAsync();
         }
     }
 }
