@@ -1,5 +1,6 @@
 ﻿using FMSystems.WeatherForecast.Domain.Repository;
 using FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl;
+using FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky;
 using FMSystems.WeatherForecast.Infrastructure.Db.Context;
 using FMSystems.WeatherForecast.Infrastructure.Db.RepositoryImpl;
 using FMSystems.WeatherForecast.Infrastructure.DBContext;
@@ -31,9 +32,13 @@ namespace Microsoft.Extensions.DependencyInjection
             //DB context
             services.AddScoped<IWeatherForecastDbContext, WeatherForecastDbContext>();
 
-            //Services.
+            //HTTP
+            services.AddHttpClient();
+
+            //Services
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IForecastRepository, ForecastRepository>();
+            services.AddScoped<IDarkSkyApiClient, DarkSkyApiClient>();
 
             return services;
         }

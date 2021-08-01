@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B38A86
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{69A67910-E86E-458A-9C09-3CE5F6E4F55F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.FMSystems.WeatherForecast.Api", "Tests.FMSystems.WeatherForecast.Api\Tests.FMSystems.WeatherForecast.Api.csproj", "{A6EC9C02-7AB8-45FF-9348-577B78844124}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.FMSystems.WeatherForecast.Api", "Tests.FMSystems.WeatherForecast.Api\Tests.FMSystems.WeatherForecast.Api.csproj", "{A6EC9C02-7AB8-45FF-9348-577B78844124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

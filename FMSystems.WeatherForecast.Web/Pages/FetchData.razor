@@ -36,11 +36,11 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private FMSystems.WeatherForecast.Domain.Entity.Forecast[] forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        forecasts = await Http.GetFromJsonAsync<FMSystems.WeatherForecast.Domain.Entity.Forecast[]>("cities/1/forecast/dumb");
     }
 
 }

@@ -5,7 +5,7 @@ namespace FMSystems.WeatherForecast.Domain.Entity
     /// <summary>
     /// The forecast representation.
     /// </summary>
-    public class WeatherForecast
+    public class Forecast
     {
         /// <summary>
         /// The date of the forecast.

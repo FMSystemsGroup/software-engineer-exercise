@@ -13,4 +13,14 @@
     // Demonstrates how a parent component can supply parameters
     [Parameter]
     public string Title { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("Survey Prompt Initialized.");
+    }
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("Survey Prompt Parameter Set.");
+    }
 }

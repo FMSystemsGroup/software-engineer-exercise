@@ -1,0 +1,160 @@
+swagger:  "2.0"
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  version:      "0.2"
+  title:        Dark Sky Weather Service Integration
+  description:  |
+                ## Use Dark Sky to get weather forecasts and historical weather data.
+
+                This is a Murano Service integration with
+                [Dark Sky](https://darksky.net) to allow your Murano solution
+                to get weather forecasts and historical weather data. [Powered by Dark Sky](https://darksky.net/poweredby/)
+  contact:
+    name:       Martin Davis
+    email:      martindavis@exosite.com
+# documentation
+externalDocs:
+  description:  Dark Sky documentation
+  url:          https://darksky.net/dev/docs
+host:     api.darksky.net
+# basePath prefixes all resource paths
+basePath: /forecast
+# tags: Categories to be referenced in documentation & marketplace
+tags:
+  - name:         Integration
+    description:  Interface to communicate to the Dark Sky weather service
+schemes:
+  # the Dark Sky REST API is served over HTTPS.
+  - https
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+
+################################################################################
+#                      Service Configuration Parameters                        #
+################################################################################
+x-exosite-config-parameters:
+  - name:         auth_token
+    description:  Dark Sky Authentication Token
+    type:         string
+    format:       password
+    required:     true
+
+################################################################################
+#                                           Paths                              #
+################################################################################
+paths:
+  /{auth_token}/{lat_and_long_or_time}:
+
+    parameters:
+      - name:         auth_token
+        in:           path
+        description:  Dark Sky Authentication Token
+        type:         string
+        required:     true
+        x-exosite-internal-use: true
+    get:
+      tags:
+        - calls
+      operationId:  forecast
+      summary:      Make a request to Dark Sky
+      description:  Fetch a weather forecast or get historical weather data based of input latitude and longitude
+      x-exosite-example:    |
+                    --#ENDPOINT GET /darksky/weather
+
+                    weather_data = Darksky.forecast({lat_and_long_or_time = '44.977753,93.265011'})
+
+                    --lat and long and time string with ISO 8601 data string
+                    -- weather_data = Darksky.forecast({lat_and_long_or_time = '44.977753,93.265011,2017-10-26T18:53:08+00:00'})
+                    --lat and long and time string with UNIX timestamp
+                    -- weather_data = Darksky.forecast({lat_and_long_or_time = '44.977753,93.265011,1509047567'})
+
+                    -- Service call with some optional request parameters
+                    --[[ weather_data = Darksky.forecast({lat_and_long_or_time = '44.977753,93.265011,1509047567',
+                                                        exclude = 'flags',
+                                                        lang = 'de'
+                    })]]
+
+                    print(to_json(weather_data))
+
+                    response.message = weather_data
+      parameters:
+        - name:         lat_and_long_or_time
+          in:           path
+          description:  A single comma delimited string containing Latitude and Longitude information with possibly a UNIX timestamp or ISO 8601 date string. 
+          type:         string
+          required:     true
+        - name:         exclude
+          in:           query
+          description:  Exclude some keys from the Dark Sky forecast response
+          type:         string
+        - name:         extend
+          in:           query
+          description:  "Fetch the next 168 hours (7 days) worth of data, hour-by-hour, instead of the next 24. WARNING: Could take a long time and cause your Murano script to fail."
+          type:         string
+        - name:         lang
+          in:           query
+          description:  Change the forecast language to one you like better. Wie wolkig würdest es am nächste Montag?
+          type:         string
+        - name:         units
+          in:           query
+          description:  Return the weather forecast data in the requested units. 
+          type:         string
+      responses:
+        "200":
+          description:  success
+          schema:
+            $ref:       "#/definitions/DarkSkyResponse"
+            
+        default:
+          description: error
+          schema:
+            $ref:       "#/definitions/ErrorResponse"
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+
+definitions:
+  ErrorResponse:
+    type: object
+    properties:
+      error:
+        type: string
+      status:
+        type: integer
+      type:
+        type: string
+
+  HourlyData:
+    type: object
+    properties:
+      time:
+        type: integer
+        format: int64
+      summary:
+        type: string
+
+  Hourly:
+    type: object
+    properties:
+      summary:
+        type: string
+      icon:
+        type: string
+      data:
+        type: array
+        items:
+            $ref: "#/definitions/HourlyData"
+
+  DarkSkyResponse:
+    type: object
+    properties:
+        latitude:
+            type: string
+        longitude:
+            type: string
+        hourly:
+            $ref: "#/definitions/Hourly"

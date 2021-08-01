@@ -24,5 +24,8 @@ namespace FMSystems.WeatherForecast.Infrastructure.Db.RepositoryImpl
 
         /// <inheritdoc/>
         public async virtual Task<ICollection<City>> GetAllAsync() => await context.Cities.ToListAsync();
+
+        /// <inheritdoc/>
+        public async virtual Task<City> GetById(int cityId) => await context.Cities.SingleOrDefaultAsync(x => x.Id == cityId);
     }
 }
