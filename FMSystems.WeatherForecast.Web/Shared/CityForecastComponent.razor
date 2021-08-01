@@ -1,0 +1,39 @@
+﻿@using FMSystems.WeatherForecast.Domain.Entity
+@inject HttpClient Http
+
+@if (CityObj != null)
+{
+    @if (ForecastObj != null)
+    {
+        <div class="card" style="width: 382px; ">
+            <img class="card-img-top" src="@($"/icons/{this.ForecastObj.Icon ?? "unknown"}.svg")" alt="Card image cap" style="height:382px;width:382px">
+            <div class="card-body">
+                <h5 class="card-title">@CityObj.Name @CityObj.State</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@CityObj.Country</h6>
+                <p class="card-text">
+                    <strong>Date: </strong>@ForecastObj.DateTimeUTC.ToString("dddd, dd MMMM yyyy") <br />
+                    <strong>Local Time: </strong>@ForecastObj.DateTimeLocal.ToString("hh:mm:ss tt")<br />
+                    <strong>GMT Time: </strong>@ForecastObj.DateTimeUTC.ToString("hh:mm:ss tt") <br />
+                    <strong>Summary: </strong>@( ForecastObj.Summary != null ? ForecastObj.Summary : "-" )<br />
+                    <strong>Temperature: </strong>@String.Format("{0:0.00 °F}", ForecastObj.TemperatureF) / @String.Format("{0:0.00 °C}", ForecastObj.TemperatureC) <br />
+                    <strong>UV Index: </strong>@ForecastObj.UVIndex
+                </p>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public Domain.Entity.City CityObj { get; set; }
+    public Domain.Entity.Forecast ForecastObj { get; set; }
+
+    protected async override Task OnParametersSetAsync()
+    {
+        if (CityObj != null)
+        {
+            Console.WriteLine("Survey Prompt Parameter Set.");
+            ForecastObj = await Http.GetFromJsonAsync<FMSystems.WeatherForecast.Domain.Entity.Forecast>($"cities/{CityObj.Id}/forecast");
+        }
+    }
+}
