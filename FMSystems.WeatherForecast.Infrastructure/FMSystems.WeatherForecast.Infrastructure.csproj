@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="Api\OpenApi\DarkSky.yaml" CodeGenerator="NSwagCSharp" Namespace="FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky" ClassName="DarkSkyApiClient" OutputPath="DarkSkyApiClient.cs" Options="/GenerateClientInterfaces:true"/>
+    <OpenApiReference Include="Api\OpenApi\DarkSky.yaml" CodeGenerator="NSwagCSharp" Namespace="FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky" ClassName="DarkSkyApiClient" OutputPath="DarkSkyApiClient.cs" Options="/GenerateClientInterfaces:true" />
   </ItemGroup>
 
   <ItemGroup>

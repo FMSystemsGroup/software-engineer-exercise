@@ -33,6 +33,11 @@ namespace FMSystems.WeatherForecast.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration((hostcontext, config) =>
+                {
+                    config.Sources.Clear();
+                    config.AddEnvironmentVariables("WeatherForecast_");
                 });
     }
 }

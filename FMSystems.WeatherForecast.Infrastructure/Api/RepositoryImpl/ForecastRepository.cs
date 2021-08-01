@@ -1,5 +1,7 @@
 ﻿using FMSystems.WeatherForecast.Domain.Repository;
 using FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky;
+using FMSystems.WeatherForecast.Infrastructure.Options;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +16,13 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private const int UNIX_TIME_2018_JULY_4_1200 = 1530705600;
-        private const string DARKSKY_EXCLUDE_ARGS = "currently,minutely,daily,flags";
         private readonly IDarkSkyApiClient _darkSkyApiClient;
-        private readonly string _apiKey;
+        private readonly IOptions<DarkSkyOptions> _darkSkyOptions;
 
-        public ForecastRepository(IDarkSkyApiClient darkSkyApiClient)
+        public ForecastRepository(IDarkSkyApiClient darkSkyApiClient, IOptions<DarkSkyOptions> darkSkyOptions)
         {
             this._darkSkyApiClient = darkSkyApiClient;
-            this._apiKey = "API_KEY";
+            this._darkSkyOptions = darkSkyOptions;
         }
 
         public IEnumerable<FMSystems.WeatherForecast.Domain.Entity.Forecast> GetForecasts()
@@ -37,16 +37,23 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
             .ToArray();
         }
 
-        public async Task<string> GetForecastSummaryAsync(double lat, double lon, int unixTime)
+        public async Task<string> GetForecastSummaryAsync(double lat, double lon, long? unixTime)
         {
-            var darkSkyReponse = await GetDarkSkyForecast(lat, lon, unixTime);
-            var hourlyData = darkSkyReponse.Hourly.Data.SingleOrDefault(x => x.Time == unixTime);
+            var time = unixTime ?? _darkSkyOptions.Value.DefaultDateTimeUnix;
+            var darkSkyReponse = await GetDarkSkyForecast(lat, lon, time);
+            var hourlyData = darkSkyReponse.Hourly.Data.SingleOrDefault(x => x.Time == time);
             return hourlyData.Summary;
         }
 
-        private async Task<DarkSkyResponse> GetDarkSkyForecast(double lat, double lon, double time)
+        private async Task<DarkSkyResponse> GetDarkSkyForecast(double lat, double lon, long time)
         {
-            return await _darkSkyApiClient.ForecastAsync($"{lat},{lon},{time}", DARKSKY_EXCLUDE_ARGS, null, null, null, _apiKey);
+            return await _darkSkyApiClient.ForecastAsync(
+                $"{lat},{lon},{time}", 
+                _darkSkyOptions.Value.ExcludeArgs, 
+                null, 
+                null, 
+                null,
+                _darkSkyOptions.Value.ApiKey);
         }
     }
 }

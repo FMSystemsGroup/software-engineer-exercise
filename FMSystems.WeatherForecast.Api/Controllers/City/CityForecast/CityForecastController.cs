@@ -61,7 +61,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers
         [HttpGet("dumb", Name = nameof(Dumb))]
         public async Task<ActionResult<ICollection<Forecast>>> Dumb(int cityId)
         {
-            await _forecastRepository.GetForecastSummaryAsync(33.448376, -112.074036, 1530705600);
+            await _forecastRepository.GetForecastSummaryAsync(33.448376, -112.074036);
             return Ok(_forecastRepository.GetForecasts());
         }
     }

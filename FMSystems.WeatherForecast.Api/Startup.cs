@@ -1,3 +1,5 @@
+using DSI.IntelligenceOIDC.Api.Extensions.DependencyInjection;
+using DSI.IntelligenceOIDC.Api.Extensions.Options;
 using FMSystems.WeatherForecast.Api.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +37,7 @@ namespace FMSystems.WeatherForecast.Api
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddWeatherForecastOptions(Configuration);
             services.AddWeatherForecastApplication();
             services.AddSwagger();
         }
