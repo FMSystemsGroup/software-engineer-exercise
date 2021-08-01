@@ -36,33 +36,19 @@ namespace FMSystems.WeatherForecast.Api.Controllers
         /// <summary>
         /// Returns the forecast for a given city id or 404 case it doesn't exist.
         /// </summary>
+        /// <param name="cityId">the city id.</param>
+        /// <param name="date">the date.</param>
         /// <returns>A list of cities or empty if none exists.<see cref="City"/></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet(Name = nameof(GetAsync))]
-        public async Task<ActionResult<Forecast>> GetAsync(int cityId)
+        public async Task<ActionResult<ICollection<Forecast>>> GetAsync(int cityId, DateTime? date)
         {
-            //TODO add logging...
             var city = await _cityRepository.GetById(cityId);
-            if (city == null)
-            {
-                return NotFound();
-            }
+            if (city == null) return NotFound("The city was not found for the given city id.");
 
-            return Ok(city);
-        }
-
-        /// <summary>
-        /// Returns the forecast for a given city id or 404 case it doesn't exist.
-        /// </summary>
-        /// <returns>A list of cities or empty if none exists.<see cref="City"/></returns>
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpGet("dumb", Name = nameof(Dumb))]
-        public async Task<ActionResult<ICollection<Forecast>>> Dumb(int cityId)
-        {
-            await _forecastRepository.GetForecastSummaryAsync(33.448376, -112.074036);
-            return Ok(_forecastRepository.GetForecasts());
+            var forecast = await _forecastRepository.GetForecastAsync(city.Latitude, city.Longitude, date);
+            return Ok(forecast);
         }
     }
 }
