@@ -6,10 +6,11 @@
 
   <ItemGroup>
     <None Remove="Api\OpenApi\DarkSky.yaml" />
+    <None Remove="Options\" />
   </ItemGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="Api\OpenApi\DarkSky.yaml" CodeGenerator="NSwagCSharp" Namespace="FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky" ClassName="DarkSkyApiClient" OutputPath="DarkSkyApiClient.cs" Options="/GenerateClientInterfaces:true"/>
+    <OpenApiReference Include="Api\OpenApi\DarkSky.yaml" CodeGenerator="NSwagCSharp" Namespace="FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky" ClassName="DarkSkyApiClient" OutputPath="DarkSkyApiClient.cs" Options="/GenerateClientInterfaces:true" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,5 +28,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Options\" />
   </ItemGroup>
 </Project>

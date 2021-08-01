@@ -1,4 +1,5 @@
 using FMSystems.WeatherForecast.Api.Extensions.Swagger;
+using FMSystems.WeatherForecast.Infrastructure.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,7 @@ namespace FMSystems.WeatherForecast.Api
             services.AddRazorPages();
             services.AddWeatherForecastApplication();
             services.AddSwagger();
+            services.AddOptions().Configure<DarkSkyOptions>(Configuration.GetSection("DarkSky"));
         }
 
         /// <summary>

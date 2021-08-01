@@ -1,5 +1,7 @@
 ﻿using FMSystems.WeatherForecast.Domain.Repository;
 using FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky;
+using FMSystems.WeatherForecast.Infrastructure.Options;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +19,13 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
         private const int UNIX_TIME_2018_JULY_4_1200 = 1530705600;
         private const string DARKSKY_EXCLUDE_ARGS = "currently,minutely,daily,flags";
         private readonly IDarkSkyApiClient _darkSkyApiClient;
-        private readonly string _apiKey;
+        private readonly IOptions<DarkSkyOptions> _darkSkyOptions;
 
-        public ForecastRepository(IDarkSkyApiClient darkSkyApiClient)
+        public ForecastRepository(IDarkSkyApiClient darkSkyApiClient,
+            IOptions<DarkSkyOptions> darkSkyOptions)
         {
-            this._darkSkyApiClient = darkSkyApiClient;
-            this._apiKey = "API_KEY";
+            this._darkSkyApiClient = darkSkyApiClient ?? throw new ArgumentNullException(nameof(darkSkyApiClient));
+            this._darkSkyOptions = darkSkyOptions ?? throw new ArgumentNullException(nameof(darkSkyOptions));
         }
 
         public IEnumerable<FMSystems.WeatherForecast.Domain.Entity.Forecast> GetForecasts()
@@ -46,7 +49,7 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
 
         private async Task<DarkSkyResponse> GetDarkSkyForecast(double lat, double lon, double time)
         {
-            return await _darkSkyApiClient.ForecastAsync($"{lat},{lon},{time}", DARKSKY_EXCLUDE_ARGS, null, null, null, _apiKey);
+            return await _darkSkyApiClient.ForecastAsync($"{lat},{lon},{time}", DARKSKY_EXCLUDE_ARGS, null, null, null, _darkSkyOptions.Value.ApiKey);
         }
     }
 }
