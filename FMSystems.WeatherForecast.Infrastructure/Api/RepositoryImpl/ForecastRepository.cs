@@ -11,11 +11,6 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
 {
     public class ForecastRepository : IForecastRepository
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly IDarkSkyApiClient _darkSkyApiClient;
         private readonly IOptions<DarkSkyOptions> _darkSkyOptions;
 
@@ -25,24 +20,30 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
             this._darkSkyOptions = darkSkyOptions;
         }
 
-        public IEnumerable<FMSystems.WeatherForecast.Domain.Entity.Forecast> GetForecasts()
+        public async Task<Domain.Entity.Forecast> GetForecastAsync(double lat, double lon, DateTime? dateTime)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new FMSystems.WeatherForecast.Domain.Entity.Forecast
+            var time = dateTime == null ? _darkSkyOptions.Value.DefaultUnixTime : ((DateTimeOffset)dateTime.Value).ToUnixTimeSeconds();
+
+            var darkSkyReponse = await GetDarkSkyForecast(lat, lon, time);
+
+            var localTime = ApplyOffset(time, darkSkyReponse.Offset.Value);
+
+            var hourlyData = darkSkyReponse.Hourly.Data.SingleOrDefault(x => x.Time == localTime);
+
+            return new Domain.Entity.Forecast()
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                DateTimeUTC = DateTimeOffset.FromUnixTimeSeconds(localTime).DateTime,
+                Offset = darkSkyReponse.Offset.Value,
+                Icon = hourlyData.Icon,
+                Summary = hourlyData.Summary,
+                TemperatureF = hourlyData.Temperature,
+                UVIndex = hourlyData.UvIndex
+            };
         }
 
-        public async Task<string> GetForecastSummaryAsync(double lat, double lon, long? unixTime)
+        private static long ApplyOffset(long unixGMTtime, double offset)
         {
-            var time = unixTime ?? _darkSkyOptions.Value.DefaultDateTimeUnix;
-            var darkSkyReponse = await GetDarkSkyForecast(lat, lon, time);
-            var hourlyData = darkSkyReponse.Hourly.Data.SingleOrDefault(x => x.Time == time);
-            return hourlyData.Summary;
+            return unixGMTtime + (60 * 60 * ((long)offset) * -1);
         }
 
         private async Task<DarkSkyResponse> GetDarkSkyForecast(double lat, double lon, long time)
@@ -50,9 +51,9 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
             return await _darkSkyApiClient.ForecastAsync(
                 $"{lat},{lon},{time}", 
                 _darkSkyOptions.Value.ExcludeArgs, 
-                null, 
-                null, 
                 null,
+                _darkSkyOptions.Value.LangArgs,
+                _darkSkyOptions.Value.UnitArgs,
                 _darkSkyOptions.Value.ApiKey);
         }
     }

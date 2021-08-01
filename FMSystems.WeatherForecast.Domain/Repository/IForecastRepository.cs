@@ -8,7 +8,6 @@ namespace FMSystems.WeatherForecast.Domain.Repository
 {
     public interface IForecastRepository
     {
-        IEnumerable<WeatherForecast.Domain.Entity.Forecast> GetForecasts();
-        Task<string> GetForecastSummaryAsync(double lat, double lon, long? unixTime = null);
+        Task<Entity.Forecast> GetForecastAsync(double lat, double lon, DateTime? dateTime = null);
     }
 }
