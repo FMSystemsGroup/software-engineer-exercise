@@ -13,24 +13,26 @@ namespace FMSystems.WeatherForecast.Infrastructure.Options
         public string ApiKey { get; set; }
 
         /// <summary>
-        /// The default date time.
-        /// </summary>
-        public string DefaultDateTime { get; set; } = "2018-07-04 12:00 PM";
-
-        /// <summary>
         /// The default date time in unix time.
         /// </summary>
-        public long DefaultDateTimeUnix
-        {
-            get
-            {
-                return ((DateTimeOffset)DateTime.ParseExact(DefaultDateTime, "yyyy-MM-dd HH:mm tt", null)).ToUnixTimeSeconds();
-            }
-        }
+        public long DefaultUnixTime { get; set; } = 1530705600;
 
         /// <summary>
         /// The darksky exclude args.
+        /// <see cref="https://gist.github.com/releaf/c3c54dc1ab59b86ef037edc125156284"/>
         /// </summary>
         public string ExcludeArgs { get; set; } = "currently,minutely,daily,flags";
+
+        /// <summary>
+        /// The unit args.
+        /// <see cref="https://gist.github.com/releaf/c3c54dc1ab59b86ef037edc125156284"/>
+        /// </summary>
+        public string UnitArgs { get; set; } = "us";
+
+        /// <summary>
+        /// The language args.
+        /// <see cref="https://gist.github.com/releaf/c3c54dc1ab59b86ef037edc125156284"/>
+        /// </summary>
+        public string LangArgs { get; set; } = "en";
     }
 }
