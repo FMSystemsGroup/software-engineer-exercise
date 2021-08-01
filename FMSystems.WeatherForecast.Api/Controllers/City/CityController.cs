@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FMSystems.WeatherForecast.Domain.Repository;
-using FMSystems.WeatherForecast.Domain.Entity;
 
-namespace FMSystems.WeatherForecast.Api.Controllers
+namespace FMSystems.WeatherForecast.Api.Controllers.City
 {
     /// <summary>
     /// A controller that is responsible for cities endpoints.
     /// </summary>
     [ApiController]
     [Route("cities")]
+    [ResponseCache(Duration = 60)]
     public class CityController: ControllerBase
     {
         private readonly ILogger<CityController> _logger;
@@ -36,7 +36,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers
         /// <returns>A list of cities or empty if none exists.<see cref="City"/></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet(Name = nameof(GetAllAsync))]
-        public async Task<ICollection<City>> GetAllAsync()
+        public async Task<ICollection<Domain.Entity.City>> GetAllAsync()
         {
             _logger.LogDebug($"{nameof(GetAllAsync)} starting...");
             var cities = await _cityRepository.GetAllAsync();

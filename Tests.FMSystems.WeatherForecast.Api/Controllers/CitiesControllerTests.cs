@@ -1,4 +1,5 @@
 ﻿using FMSystems.WeatherForecast.Api.Controllers;
+using FMSystems.WeatherForecast.Api.Controllers.City;
 using FMSystems.WeatherForecast.Domain.Entity;
 using FMSystems.WeatherForecast.Domain.Repository;
 using Microsoft.Extensions.Logging;

@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Http;
 using FMSystems.WeatherForecast.Domain.Repository;
 using FMSystems.WeatherForecast.Domain.Entity;
 
-namespace FMSystems.WeatherForecast.Api.Controllers
+namespace FMSystems.WeatherForecast.Api.Controllers.City.CityForecast
 {
     /// <summary>
     /// A controller that is responsible for cities's forecasts endpoints.
     /// </summary>
     [ApiController]
     [Route("cities/{cityId:int}/forecast")]
+    [ResponseCache(Duration = 60)]
     public class CityForecastController: ControllerBase
     {
         private readonly ILogger<CityController> _logger;
