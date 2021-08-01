@@ -1,25 +1,25 @@
-﻿@page "/cities"
+﻿@page "/forecast-page"
 @using FMSystems.WeatherForecast.Domain.Entity
 @inject HttpClient Http
 
-<h1>Cities</h1>
+<h1>Weather Forecast</h1>
 
-<p>Here you can see the list of cities we have stored.</p>
-
+<p>Select a city below to check the weather on July 4, 2018 at noon.</p>
 @if (cities == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <select class="form-control selectpicker" @onchange="DoStuff">
+    <select class="form-control selectpicker" @onchange="DoStuff" style="width: 29rem;">
         <option value="">--select--</option>
         @foreach (var item in cities)
         {
-            <option value="@item.Id">@item.Name</option>
+            <option value="@item.Id">@item.Name/@item.State - @item.Country</option>
         }
     </select>
-    <Forecast City="@selectedCity" />
+    <br />
+    <CityForecastComponent CityObj="@selectedCity" />
 }
 
 @code {
