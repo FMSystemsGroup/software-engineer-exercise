@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace DSI.IntelligenceOIDC.Api.Extensions.Options
+namespace FMSystems.WeatherForecast.Api.Extensions.Options
 {
     /// <summary>
     /// A services collection extension to encapulate the configuration objects setups.

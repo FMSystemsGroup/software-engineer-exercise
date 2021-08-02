@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using FMSystems.WeatherForecast.Infrastructure.ApiClients.DarkSky;
 
-namespace DSI.IntelligenceOIDC.Api.Extensions.ApiClients
+namespace FMSystems.WeatherForecast.Api.Extensions.ApiClients
 {
     /// <summary>
     /// Extends <see cref="IServiceCollection"/>.

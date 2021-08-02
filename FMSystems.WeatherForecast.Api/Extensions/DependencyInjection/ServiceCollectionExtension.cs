@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace DSI.IntelligenceOIDC.Api.Extensions.DependencyInjection
+namespace FMSystems.WeatherForecast.Api.Extensions.DependencyInjection
 {
     /// <summary>
     /// A services collection extension to encapulate the dependency injection operations.
