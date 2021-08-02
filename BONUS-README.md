@@ -29,6 +29,11 @@ Some other environment variables have default values but can be overwritten with
 ## How to run?
 You can run this application on Visual Studio or using the command line:
 
+## Online vesion
+On August 2nd, 2021 there was an online demo available at: 
+https://will-weatherforecast.azurewebsites.net/
+https://will-weatherforecast.azurewebsites.net/swagger
+
 ```sh
 dotnet run --project FMSystems.WeatherForecast.Api
 ```
@@ -52,12 +57,9 @@ Swagger Docs is available and can be found here ```https://localhost:5001/swagge
 TODO
 
 ## Optimization opportunities
-We could clearly save the time machine weather information in a database and avoid repetitive calls to the DarkSky api.
-
-### Requirement 4:
-Selecting a city from the drop-down needs to trigger a call out to the [DarkSky API](https://darksky.net/dev) and retrieve the weather for the selected city from July 4, 2018 at exactly noon local time. On the screen display the noon current summary description (example: Mostly Sunny), temperature (example: 88.81), and UV index (example: 5).
-
-> Note: The Dark Sky API [doesn't enable CORS](https://darksky.net/dev/docs/faq#cross-origin). Handle this case as you see fit.
+We could clearly save the time machine weather information in a database and avoid repetitive calls to the DarkSky api once it's immutable'.
+A Generic Repository can be a good idea for a bigger project but unnecessary for this exercise.
+An Extension logger to better format the HTTP requests sending it to a shared logging repository would be nice too.
 
 ### Bonus
 - Write clear documentation on how the app was designed and how to run the code.

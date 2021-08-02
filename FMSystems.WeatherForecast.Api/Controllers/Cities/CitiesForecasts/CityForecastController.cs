@@ -38,7 +38,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers.Cities.CitiesForecast
         /// Returns the forecast for a given city id or 404 case it doesn't exist.
         /// </summary>
         /// <param name="cityId">the city id.</param>
-        /// <param name="date">the date.</param>
+        /// <param name="date">the date or 07/04/2018 at noon if nothing is passed.</param>
         /// <returns>A list of cities or empty if none exists.<see cref="City"/></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -51,7 +51,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers.Cities.CitiesForecast
             if (city == null) return NotFound("The city was not found for the given city id.");
 
             var forecast = await _forecastRepository.GetForecastAsync(city.Latitude, city.Longitude, date);
-            if (forecast == null) return NotFound("Weather information was not found for the given city for the given date.");
+            if (!forecast.IsValid) return NotFound("Weather information was not found for the given city for the given date and time.");
 
             return Ok(forecast);
         }

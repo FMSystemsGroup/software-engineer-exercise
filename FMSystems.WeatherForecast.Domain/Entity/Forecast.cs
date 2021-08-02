@@ -18,7 +18,7 @@ namespace FMSystems.WeatherForecast.Domain.Entity
         public DateTimeOffset DateTimeLocal => new DateTimeOffset(DateTimeUTC.DateTime.AddHours(Offset), new TimeSpan(Offset, 0, 0));
 
         /// <summary>
-        /// A quick summary about the forecast.
+        /// A quick summary about the forecast. It can be empty and still be a valid forecast.
         /// </summary>
         public string Summary { get; set; }
 
@@ -46,5 +46,10 @@ namespace FMSystems.WeatherForecast.Domain.Entity
         /// The Time offset from UTC.
         /// </summary>
         public int Offset { get; set; }
+        
+        /// <summary>
+        /// Identifies if it's a valid forecast.
+        /// </summary>
+        public bool IsValid => TemperatureF != null;
     }
 }
