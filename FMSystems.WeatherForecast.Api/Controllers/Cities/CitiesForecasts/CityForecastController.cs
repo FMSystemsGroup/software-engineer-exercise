@@ -51,7 +51,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers.Cities.CitiesForecast
             if (city == null) return NotFound("The city was not found for the given city id.");
 
             var forecast = await _forecastRepository.GetForecastAsync(city.Latitude, city.Longitude, date);
-            if (!forecast.IsValid) return NotFound("Weather information was not found for the given city for the given date and time.");
+            if (!forecast.IsValid) return BadRequest("No valid weather information was found for the given date and time.");
 
             return Ok(forecast);
         }
