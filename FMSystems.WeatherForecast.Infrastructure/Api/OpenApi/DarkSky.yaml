@@ -165,7 +165,7 @@ definitions:
         longitude:
             type: string
         offset:
-            type: number
-            format: double
+            type: integer
+            format: int32
         hourly:
             $ref: "#/definitions/Hourly"
