@@ -10,12 +10,12 @@ namespace FMSystems.WeatherForecast.Domain.Entity
         /// <summary>
         /// The date and time of the forecast in UTC.
         /// </summary>
-        public DateTime DateTimeUTC { get; set; }
+        public DateTimeOffset DateTimeUTC { get; set; }
 
         /// <summary>
         /// The date and time of the forecast.
         /// </summary>
-        public DateTime DateTimeLocal => DateTimeUTC.AddHours((long)Offset);
+        public DateTimeOffset DateTimeLocal => new DateTimeOffset(DateTimeUTC.DateTime.AddHours(Offset), new TimeSpan(Offset, 0, 0));
 
         /// <summary>
         /// A quick summary about the forecast.
@@ -45,6 +45,6 @@ namespace FMSystems.WeatherForecast.Domain.Entity
         /// <summary>
         /// The Time offset from UTC.
         /// </summary>
-        public double Offset { get; set; }
+        public int Offset { get; set; }
     }
 }
