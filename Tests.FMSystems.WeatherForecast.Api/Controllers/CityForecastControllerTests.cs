@@ -1,5 +1,4 @@
-﻿using FMSystems.WeatherForecast.Api.Controllers.City.CityForecast;
-using FMSystems.WeatherForecast.Domain.Repository;
+﻿using FMSystems.WeatherForecast.Domain.Repository;
 using FMSystems.WeatherForecast.Domain.Entity;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -7,8 +6,9 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 using Microsoft.AspNetCore.Mvc;
+using FMSystems.WeatherForecast.Api.Controllers.Cities.CitiesForecast;
 
-namespace DSI.IntelligenceOIDC.Api.Tests.Controllers.City.CityForecast
+namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
 {
     public class CityForecastControllerTest
     {
@@ -43,7 +43,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers.City.CityForecast
             _mockCityRepository.Reset();
             _mockLogger.Reset();
 
-            var mockCity = new FMSystems.WeatherForecast.Domain.Entity.City() { Id = 1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 };
+            var mockCity = new City() { Id = 1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 };
 
             var mockForecast = new Forecast() { DateTimeUTC = new DateTime(0), Icon = "blue", Offset = 5, Summary = "Sunny", TemperatureF = 50, UVIndex = 2 };
 
