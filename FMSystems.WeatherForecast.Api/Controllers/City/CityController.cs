@@ -40,7 +40,6 @@ namespace FMSystems.WeatherForecast.Api.Controllers.City
         {
             _logger.LogDebug($"{nameof(GetAllAsync)} starting...");
             var cities = await _cityRepository.GetAllAsync();
-            _logger.LogDebug($"{nameof(GetAllAsync)} finishing: ${cities.GetEnumerator()}");
             
             return cities;
         }

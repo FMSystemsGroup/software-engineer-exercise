@@ -34,10 +34,10 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
             {
                 DateTimeUTC = DateTimeOffset.FromUnixTimeSeconds(localTime).DateTime,
                 Offset = darkSkyReponse.Offset.Value,
-                Icon = hourlyData.Icon,
-                Summary = hourlyData.Summary,
-                TemperatureF = hourlyData.Temperature,
-                UVIndex = hourlyData.UvIndex
+                Icon = hourlyData?.Icon,
+                Summary = hourlyData?.Summary,
+                TemperatureF = hourlyData?.Temperature,
+                UVIndex = hourlyData?.UvIndex
             };
         }
 

@@ -26,10 +26,10 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
         #region Constructor Tests
 
         [Fact]
-        public void Constructor_WithNullLogger_ThrowsArgumentNullLoggerException() =>
+        public void Constructor_WithNullLogger_ThrowsArgumentNullException() =>
             Assert.Throws<ArgumentNullException>(() => new CityController(null, _mockCityRepository.Object));
         [Fact]
-        public void Constructor_WithNullLogger_ThrowsArgumentNullCityRepositoryException() =>
+        public void Constructor_WithNullCityRepository_ThrowsArgumentNullException() =>
             Assert.Throws<ArgumentNullException>(() => new CityController(_mockLogger.Object, null));
 
         #endregion
@@ -42,11 +42,11 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
             _mockCityRepository.Reset();
             _mockLogger.Reset();
 
-            var cities = new List<City>
+            var cities = new List<FMSystems.WeatherForecast.Domain.Entity.City>
                     {
-                        new City() { Id=1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 },
-                        new City() { Id=2, Name = "Seattle", State = "WA", Country = "US", Latitude = 3, Longitude = 9 },
-                        new City() { Id=3, Name = "London", State = null, Country = "EN", Latitude = Double.MinValue, Longitude = Double.MaxValue },
+                        new FMSystems.WeatherForecast.Domain.Entity.City() { Id=1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 },
+                        new FMSystems.WeatherForecast.Domain.Entity.City() { Id=2, Name = "Seattle", State = "WA", Country = "US", Latitude = 3, Longitude = 9 },
+                        new FMSystems.WeatherForecast.Domain.Entity.City() { Id=3, Name = "London", State = null, Country = "EN", Latitude = Double.MinValue, Longitude = Double.MaxValue },
                     };
 
             _mockCityRepository
@@ -67,7 +67,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
                         It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
                         It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)),
-                Times.Exactly(2));
+                Times.Once);
         }
         [Fact]
         public async Task GetAllAsyncWithEmptyResult_Successful()
@@ -76,7 +76,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
             _mockCityRepository.Reset();
             _mockLogger.Reset();
 
-            var cities = new List<City> { };
+            var cities = new List<FMSystems.WeatherForecast.Domain.Entity.City> { };
 
             _mockCityRepository
                 .Setup(x => x.GetAllAsync())
@@ -96,7 +96,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
                         It.Is<It.IsAnyType>((v, t) => true),
                         It.IsAny<Exception>(),
                         It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)),
-                Times.Exactly(2));
+                Times.Once);
         }
     }
 }

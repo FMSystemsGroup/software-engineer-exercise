@@ -19,6 +19,6 @@ namespace FMSystems.WeatherForecast.Domain.Repository
         /// </summary>
         /// <param name="cityId">the city id</param>
         /// <returns>A city for the given id or null <see cref="City"/></returns>
-        Task<City> GetById(int cityId);
+        Task<City> GetByIdAsync(int cityId);
     }
 }

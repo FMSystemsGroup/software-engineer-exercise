@@ -17,7 +17,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers.City.CityForecast
     [ResponseCache(Duration = 60)]
     public class CityForecastController: ControllerBase
     {
-        private readonly ILogger<CityController> _logger;
+        private readonly ILogger<CityForecastController> _logger;
         private readonly ICityRepository _cityRepository;
         private readonly IForecastRepository _forecastRepository;
 
@@ -27,7 +27,7 @@ namespace FMSystems.WeatherForecast.Api.Controllers.City.CityForecast
         /// <param name="logger">the logger object.</param>
         /// <param name="cityRepository">the city repository.</param>
         /// <param name="forecastRepository">the forecast repository.</param>
-        public CityForecastController(ILogger<CityController> logger, ICityRepository cityRepository, IForecastRepository forecastRepository)
+        public CityForecastController(ILogger<CityForecastController> logger, ICityRepository cityRepository, IForecastRepository forecastRepository)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _cityRepository = cityRepository ?? throw new ArgumentNullException(nameof(cityRepository));
@@ -43,12 +43,16 @@ namespace FMSystems.WeatherForecast.Api.Controllers.City.CityForecast
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet(Name = nameof(GetAsync))]
-        public async Task<ActionResult<ICollection<Forecast>>> GetAsync(int cityId, DateTime? date)
+        public async Task<ActionResult<Forecast>> GetAsync(int cityId, DateTime? date)
         {
-            var city = await _cityRepository.GetById(cityId);
+            _logger.LogDebug($"{nameof(GetAsync)} starting...");
+
+            var city = await _cityRepository.GetByIdAsync(cityId);
             if (city == null) return NotFound("The city was not found for the given city id.");
 
             var forecast = await _forecastRepository.GetForecastAsync(city.Latitude, city.Longitude, date);
+            if (forecast == null) return NotFound("Weather information was not found for the given city for the given date.");
+
             return Ok(forecast);
         }
     }
