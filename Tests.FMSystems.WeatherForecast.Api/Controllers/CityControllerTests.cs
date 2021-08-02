@@ -1,4 +1,6 @@
 ﻿using FMSystems.WeatherForecast.Api.Controllers.Cities;
+using FMSystems.WeatherForecast.Api.Controllers.Cities.Forecasts;
+using FMSystems.WeatherForecast.Domain.Entity;
 using FMSystems.WeatherForecast.Domain.Repository;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -7,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
+namespace Tests.FMSystems.WeatherForecast.Api.Controllers.Cities
 {
     public class CityControllerTest
     {
@@ -40,11 +42,11 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
             _mockCityRepository.Reset();
             _mockLogger.Reset();
 
-            var cities = new List<FMSystems.WeatherForecast.Domain.Entity.City>
+            var cities = new List<City>
                     {
-                        new FMSystems.WeatherForecast.Domain.Entity.City() { Id=1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 },
-                        new FMSystems.WeatherForecast.Domain.Entity.City() { Id=2, Name = "Seattle", State = "WA", Country = "US", Latitude = 3, Longitude = 9 },
-                        new FMSystems.WeatherForecast.Domain.Entity.City() { Id=3, Name = "London", State = null, Country = "EN", Latitude = Double.MinValue, Longitude = Double.MaxValue },
+                        new City() { Id=1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 },
+                        new City() { Id=2, Name = "Seattle", State = "WA", Country = "US", Latitude = 3, Longitude = 9 },
+                        new City() { Id=3, Name = "London", State = null, Country = "EN", Latitude = Double.MinValue, Longitude = Double.MaxValue },
                     };
 
             _mockCityRepository
@@ -74,7 +76,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
             _mockCityRepository.Reset();
             _mockLogger.Reset();
 
-            var cities = new List<FMSystems.WeatherForecast.Domain.Entity.City> { };
+            var cities = new List<City> { };
 
             _mockCityRepository
                 .Setup(x => x.GetAllAsync())

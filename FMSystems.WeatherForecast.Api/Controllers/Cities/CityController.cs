@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using FMSystems.WeatherForecast.Domain.Repository;
 using FMSystems.WeatherForecast.Domain.Entity;
 
-namespace FMSystems.WeatherForecast.Api.Controllers.Cities
+namespace FMSystems.WeatherForecast.Api.Controllers.Cities.Forecasts
 {
     /// <summary>
     /// A controller that is responsible for cities endpoints.

@@ -8,7 +8,7 @@ using Xunit;
 using Microsoft.AspNetCore.Mvc;
 using FMSystems.WeatherForecast.Api.Controllers.Cities.CitiesForecast;
 
-namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
+namespace Tests.FMSystems.WeatherForecast.Api.Controllers.Cities.Forecasts
 {
     public class CityForecastControllerTest
     {
@@ -96,7 +96,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
 
             _mockCityRepository
                 .Setup(x => x.GetByIdAsync(It.IsAny<int>()))
-                .ReturnsAsync((FMSystems.WeatherForecast.Domain.Entity.City)null)
+                .ReturnsAsync((City)null)
                 .Verifiable();
 
             // Act
@@ -124,7 +124,7 @@ namespace DSI.IntelligenceOIDC.Api.Tests.Controllers
             _mockCityRepository.Reset();
             _mockLogger.Reset();
 
-            var mockCity = new FMSystems.WeatherForecast.Domain.Entity.City() { Id = 1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 };
+            var mockCity = new City() { Id = 1, Name = "Raleigh", State = "NC", Country = "US", Latitude = 1, Longitude = 2 };
 
             _mockCityRepository
                 .Setup(x => x.GetByIdAsync(mockCity.Id))
