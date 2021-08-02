@@ -16,8 +16,8 @@ namespace FMSystems.WeatherForecast.Infrastructure.Api.RepositoryImpl
 
         public ForecastRepository(IDarkSkyApiClient darkSkyApiClient, IOptions<DarkSkyOptions> darkSkyOptions)
         {
-            this._darkSkyApiClient = darkSkyApiClient;
-            this._darkSkyOptions = darkSkyOptions;
+            _darkSkyOptions = darkSkyOptions ?? throw new ArgumentNullException(nameof(darkSkyOptions));
+            _darkSkyApiClient = darkSkyApiClient ?? throw new ArgumentNullException(nameof(darkSkyApiClient));
         }
 
         public async Task<Domain.Entity.Forecast> GetForecastAsync(double lat, double lon, DateTime? dateTime)
