@@ -29,16 +29,17 @@ Some other environment variables have default values but can be overwritten with
 ## How to run?
 You can run this application on Visual Studio or using the command line:
 
-## Online vesion
-On August 2nd, 2021 there was an online demo available at: 
-https://will-weatherforecast.azurewebsites.net/
-https://will-weatherforecast.azurewebsites.net/swagger
-
 ```sh
 dotnet run --project FMSystems.WeatherForecast.Api
 ```
 
 Check if you have .NET5 SDK installed with the following: ```dotnet --list-sdks```
+
+## Online vesion
+On August 2nd, 2021 there was an online demo available at: 
+https://will-weatherforecast.azurewebsites.net/
+https://will-weatherforecast.azurewebsites.net/swagger
+
 
 ## DarkSky Api Implementation
 DarkSky api is a "connected service" and its client is auto generated using swaggergen during build. In the following file you can find the yaml with its specification:
@@ -57,4 +58,4 @@ Swagger Docs is available and can be found here ```https://localhost:5001/swagge
 ## Enhancement opportunities
 We could clearly save the time machine weather information in a database and avoid repetitive calls to the DarkSky api.
 A Generic Repository can be a good idea for a bigger project but seemed a cannon bullet for this exercise.
-A global error handler can be configured leaving the controller / services code clean.
+A global error handler can be configured leaving the controller / services code cleaner.
