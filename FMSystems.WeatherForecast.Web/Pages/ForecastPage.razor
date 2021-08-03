@@ -1,0 +1,48 @@
+﻿@page "/forecast-page"
+@using FMSystems.WeatherForecast.Domain.Entity
+@inject HttpClient Http
+
+<h1>Weather Forecast</h1>
+
+<p>Select a city below to check the weather on July 4, 2018 at noon.</p>
+@if (cities == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <select class="form-control selectpicker" @onchange="DoStuff" style="width: 29rem;">
+        <option value="">--select--</option>
+        @foreach (var item in cities)
+        {
+            <option value="@item.Id">@item.Name/@item.State - @item.Country</option>
+        }
+    </select>
+    <br />
+    <CityForecastComponent CityObj="@selectedCity" />
+}
+
+@code {
+    const string GETALL_ASYNC_ENDPOINT = "Cities";
+
+    private IEnumerable<City> cities;
+    private City selectedCity;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cities = await Http.GetFromJsonAsync<IEnumerable<City>>(GETALL_ASYNC_ENDPOINT);
+    }
+
+    private void DoStuff(ChangeEventArgs e)
+    {
+        var selectedString = e.Value.ToString();
+        if (!string.IsNullOrWhiteSpace(selectedString))
+        {
+            selectedCity = cities.Single(x => x.Id.ToString() == selectedString);
+        }
+        else
+        {
+            selectedCity = null;
+        }
+    }
+}
