@@ -53,22 +53,8 @@ Why you would want to do that I don't know but if you want to check the generate
 ## Swagger
 Swagger Docs is available and can be found here ```https://localhost:5001/swagger/index.html```.
 
-## Online demo URL:
-TODO
 
-## Optimization opportunities
-We could clearly save the time machine weather information in a database and avoid repetitive calls to the DarkSky api once it's immutable'.
-A Generic Repository can be a good idea for a bigger project but unnecessary for this exercise.
-An Extension logger to better format the HTTP requests sending it to a shared logging repository would be nice too.
-
-### Bonus
-- Write clear documentation on how the app was designed and how to run the code.
-- Provide an online demo of the application.
-- Describe optimization opportunities when you conclude.
-
-## What you should strive for
-- Good use of current .NET design patterns and performance best practices.
-- Solid testing approach.
-- Extensible code.
-- Able to explain your design decisions.
-- Demonstrate good git best practices.
+## Enhancement opportunities
+We could clearly save the time machine weather information in a database and avoid repetitive calls to the DarkSky api.
+A Generic Repository can be a good idea for a bigger project but seemed a cannon bullet for this exercise.
+A global error handler can be configured leaving the controller / services code clean.
