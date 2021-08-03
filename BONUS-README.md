@@ -37,7 +37,9 @@ Check if you have .NET5 SDK installed with the following: ```dotnet --list-sdks`
 
 ## Online vesion
 On August 2nd, 2021 there was an online demo available at: 
-https://will-weatherforecast.azurewebsites.net/
+https://will-weatherforecast.azurewebsites.net/ 
+
+The swagger docs were at: 
 https://will-weatherforecast.azurewebsites.net/swagger
 
 
