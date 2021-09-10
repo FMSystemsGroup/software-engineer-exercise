@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Cities Page";
+}
+@model IEnumerable<CityModel>;
+
+
+<div class="text-center">
+    <h1 class="display-4">List of Cities from API</h1>
+    <div></div>
+
+
+    @Html.DropDownList("DropDownValue", new SelectList(Model, "city", "city"), "-- Select One --", new { @id = "ddlCity" })
+</div>
+<div id="divweather" style="display:none;">
+    <h3>Weather on 2018-07-04 12:00:00PM:</h3>
+    <label id="lblweather"></label>
+</div>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ddlCity").change(function () {
+            var a = $("#ddlCity option:selected").val();
+            $.ajax({
+                type: "POST",
+                url: "Home/GetWeather/",
+                data: { "city_name": a },
+                dataType: 'json',
+
+                error: function (xhr, status, error) { },
+                success: function (response) {
+                    $("#divweather").css('display', 'block');
+                    var result = JSON.parse(response);
+                    $("#lblweather").text( "Summary:"+result.currently.summary+", Temperature:" +result.currently.temperature +", UVIndex:" +result.currently.uvIndex);
+                    
+
+                }
+            });
+        });
+
+    });
+</script>
