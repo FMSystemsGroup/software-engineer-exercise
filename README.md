@@ -16,7 +16,7 @@
 
 ### [API Documentation](https://cityapi.azurewebsites.net/swagger/index.html)
 
-## Implmentation Notes
+## Impelmentation Notes
 > Unable to push to Git Repository from Visual Studio Mac Community Edition. (Windows license required. Please consider proviing if selected for employment.
  
 > [DarkSkyAPI](https://darksky.net/dev) no longer allows new users to sign up. (Click to see prompt I recieved.)
