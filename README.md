@@ -3,18 +3,25 @@
 - November 14, 2021
 - .NET 6 Implementation of a Blazor Web Assembly, ASP.NET and Minimal Web API
 
+## Getting Started
+
+- Select city from drop down menu
+- Click "API Spec" to view api specification
+- Click "API Doc" to see documentation and manually test API
+- App and API tester are mobile compatible
+
+### [App Demo](https://weatherappexercise.azurewebsites.net/)
+
+### [API Spec](https://cityapi.azurewebsites.net/swagger/v1/swagger.json)
+
+### [API Documentation](https://cityapi.azurewebsites.net/swagger/index.html)
+
+## Implmentation Notes
 > Unable to push to Git Repository from Visual Studio Mac Community Edition. (Windows license required. Please consider proviing if selected for employment.
-> 
+ 
 > [DarkSkyAPI](https://darksky.net/dev) no longer allows new users to sign up. (Click to see prompt I recieved.)
-> 
+ 
 > I opted for [OpenWeatherMap](https://home.openweathermap.org/myservices) instead but the historical data requires a paid membership.
-
-# [App Demo](https://weatherappexercise.azurewebsites.net/)
-
-# [API Spec](https://cityapi.azurewebsites.net/swagger/v1/swagger.json)
-
-# [API Documentation](https://cityapi.azurewebsites.net/swagger/index.html)
-
 
 ## Context
 This exercise demonstrates to you some of the technologies being utilized at FM: Systems. It will also demonstrate to the development team how you approach a solution given liberal implementation guidelines. This exercise is designed to be completed under four hours.
@@ -73,7 +80,7 @@ public static class CityEndpoints
 
 > I also opted for the fluent pattern instead of data annotations when defining the endpoints for compatibility with Swagger.
 
--
+- - -
 ### Requirement 2:
 Create a .NET Core unit test project to test this API action.
 
@@ -126,7 +133,7 @@ public class CityServiceTests
 ```
 > Note: 6 tests were created to test the City collection size and validity of the containing elements.
  
--
+- - -
 
 ### Requirement 3:
 Using any web technologies you'd like, display the list of cities in a drop-down list. The list should be populated via a request to the city collection API that you created. The UI design should be simple and take minimal time to develop.
@@ -230,7 +237,7 @@ global using FMS.Blazor.Server.Services;
 
 >  - Not a big fan of preprocessor directives but this proved to be the quickest alternative to choose the adjacent api base address based on the server app running in debug or release mode.
 
--
+- - -
 
 ### Requirement 4:
 Selecting a city from the drop-down needs to trigger a call out to the [DarkSky API](https://darksky.net/dev) and retrieve the weather for the selected city from July 4, 2018 at exactly noon local time. On the screen display the noon current summary description (example: Mostly Sunny), temperature (example: 88.81), and UV index (example: 5).
