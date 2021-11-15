@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.API", "FMS.API.csproj", "{80877DCB-A912-4913-8928-5902DC095F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.API.Tests", "..\FMS.API.Tests\FMS.API.Tests.csproj", "{71F26DF3-6F75-437E-B5F2-73A59F01DC61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.App", "..\FMS.Blazor.Server\FMS.App.csproj", "{2B644BA1-73A7-4D8D-855B-F09B7939D8EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80877DCB-A912-4913-8928-5902DC095F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80877DCB-A912-4913-8928-5902DC095F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80877DCB-A912-4913-8928-5902DC095F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80877DCB-A912-4913-8928-5902DC095F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F26DF3-6F75-437E-B5F2-73A59F01DC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F26DF3-6F75-437E-B5F2-73A59F01DC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F26DF3-6F75-437E-B5F2-73A59F01DC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F26DF3-6F75-437E-B5F2-73A59F01DC61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B644BA1-73A7-4D8D-855B-F09B7939D8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B644BA1-73A7-4D8D-855B-F09B7939D8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B644BA1-73A7-4D8D-855B-F09B7939D8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B644BA1-73A7-4D8D-855B-F09B7939D8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5CE346D-882A-467A-AC74-964EAFE15147}
+	EndGlobalSection
+EndGlobal
