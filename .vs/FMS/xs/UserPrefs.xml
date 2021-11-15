@@ -1,14 +1,17 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{6766CE66-2051-434E-9EAF-AB151A3B818E}|FMS.API">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="Multiple Projects">
   <MonoDevelop.Ide.ItemProperties.FMS.API.Minimal PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="FMS.Blazor.Server/Shared/MainLayout.razor">
     <Files>
-      <File FileName="FMS.API/Program.cs" Line="12" Column="3" />
+      <File FileName="FMS.Blazor.Server/Shared/MainLayout.razor" Line="31" Column="1" />
+      <File FileName="FMS.Blazor.Server/Pages/_Layout.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FMS" expanded="True">
-            <Node name="FMS.Blazor.Server" expanded="True" />
+            <Node name="FMS.Blazor.Server" expanded="True">
+              <Node name="Shared" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -27,5 +30,13 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="Multiple Projects" Name="Multiple Projects">
+      <Items>
+        <StartupItem ItemId="{6766CE66-2051-434E-9EAF-AB151A3B818E}" ItemName="FMS.API.Minimal" ConfigurationId="FMS.API" />
+        <StartupItem ItemId="{93A78D47-359F-41B0-A3A9-AA062187177E}" ItemName="FMS.API.Tests" ConfigurationId="Default" />
+        <StartupItem ItemId="{1A166ACB-E860-4617-953E-9525EE7CDE21}" ItemName="FMS.Blazor.Server" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
 </Properties>

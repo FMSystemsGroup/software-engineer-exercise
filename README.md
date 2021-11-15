@@ -256,8 +256,6 @@ Selecting a city from the drop-down needs to trigger a call out to the [DarkSky 
 
 - BadStatusCodeDialog.cs (Dialog displayed when API call status code does not return status code "200 OK")
 
--
-
 #### .NET 6 Shared Class Library
 
 ```Shell
