@@ -1,7 +1,7 @@
 # .NET 6 Weather App
 - Written by Thomas Divine Smith, II 
 - November 14, 2021
-- .NET 6 Implementation of a Blazor Web Assembly, ASP.NET and Minimal Web API
+- .NET 6 Implementation of a Blazor Server and ASP.NET Minimal Web API
 
 ## Getting Started
 

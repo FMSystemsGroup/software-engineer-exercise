@@ -1,18 +1,12 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="Multiple Projects">
+  <MonoDevelop.Ide.ItemProperties.FMS.API.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.FMS.Blazor.Server PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.FMS.API.Minimal PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FMS.Blazor.Server/Shared/MainLayout.razor">
-    <Files>
-      <File FileName="FMS.Blazor.Server/Shared/MainLayout.razor" Line="31" Column="1" />
-      <File FileName="FMS.Blazor.Server/Pages/_Layout.cshtml" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FMS" expanded="True">
-            <Node name="FMS.Blazor.Server" expanded="True">
-              <Node name="Shared" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="FMS" expanded="True" />
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
