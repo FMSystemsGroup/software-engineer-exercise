@@ -16,9 +16,11 @@
                     @if (IndexViewModel.Cities != null)
                     {
                         citiesNotEmpty = true;
-@foreach (var city in IndexViewModel.Cities)
-{
-<MudSelectItem Value="@city" />}}
+                        @foreach (var city in IndexViewModel.Cities)
+                        {
+                            <MudSelectItem Value="@city" />
+                        }
+                    }
                 </MudSelect>
 
             </MudForm>
