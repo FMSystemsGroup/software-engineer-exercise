@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/FMS.Shared.csproj": {}
+  },
+  "projects": {
+    "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/FMS.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/FMS.Shared.csproj",
+        "projectName": "FMS.Shared",
+        "projectPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/FMS.Shared.csproj",
+        "packagesPath": "/Users/thomassmith/.nuget/packages/",
+        "outputPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/thomassmith/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/Users/thomassmith/Documents/DevExpress 21.1/Components/System/Components/packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

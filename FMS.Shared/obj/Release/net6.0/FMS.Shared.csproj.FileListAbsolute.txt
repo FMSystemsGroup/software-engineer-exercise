@@ -1,0 +1,12 @@
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/bin/Release/net6.0/FMS.Shared.deps.json
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/bin/Release/net6.0/FMS.Shared.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/bin/Release/net6.0/ref/FMS.Shared.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/bin/Release/net6.0/FMS.Shared.pdb
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.csproj.AssemblyReference.cache
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.AssemblyInfoInputs.cache
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.AssemblyInfo.cs
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.csproj.CoreCompileInputs.cache
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/ref/FMS.Shared.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Shared/obj/Release/net6.0/FMS.Shared.pdb

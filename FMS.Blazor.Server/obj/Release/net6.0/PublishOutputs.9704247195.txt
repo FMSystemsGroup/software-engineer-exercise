@@ -1,0 +1,10 @@
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Blazor.Server
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/appsettings.Development.json
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/appsettings.json
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Blazor.Server.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Blazor.Server.deps.json
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Blazor.Server.runtimeconfig.json
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Blazor.Server.pdb
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/MudBlazor.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Shared.dll
+/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.Blazor.Server/obj/Release/net6.0/PubTmp/Out/FMS.Shared.pdb

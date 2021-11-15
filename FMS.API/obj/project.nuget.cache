@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "HG26ioYziVieU/DUYbwD+5Ev9cBSohBHH1ztRrp/wKb8DGK8qEBkDF5HzQOJQl6WwAMifMZPuQogc4IWA51LwA==",
+  "success": true,
+  "projectFilePath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/FMS.API.Minimal.csproj",
+  "expectedPackageFiles": [
+    "/Users/thomassmith/.nuget/packages/azure.core/1.20.0/azure.core.1.20.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/azure.identity/1.5.0/azure.identity.1.5.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/microsoft.bcl.asyncinterfaces/1.0.0/microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/microsoft.identity.client/4.30.1/microsoft.identity.client.4.30.1.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/microsoft.identity.client.extensions.msal/2.18.4/microsoft.identity.client.extensions.msal.2.18.4.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/nswag.msbuild/13.14.3/nswag.msbuild.13.14.3.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.diagnostics.diagnosticsource/4.6.0/system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.memory.data/1.0.2/system.memory.data.1.0.2.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.security.cryptography.protecteddata/4.5.0/system.security.cryptography.protecteddata.4.5.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.text.encodings.web/4.7.2/system.text.encodings.web.4.7.2.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.text.json/4.6.0/system.text.json.4.6.0.nupkg.sha512",
+    "/Users/thomassmith/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}

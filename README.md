@@ -9,11 +9,11 @@
 > 
 > I opted for [OpenWeatherMap](https://home.openweathermap.org/myservices) instead but the historical data requires a paid membership.
 
-#[App Demo](https://weatherappexercise.azurewebsites.net/)
+# [App Demo](https://weatherappexercise.azurewebsites.net/)
 
-#[API Spec](https://cityapi.azurewebsites.net/swagger/v1/swagger.json)
+# [API Spec](https://cityapi.azurewebsites.net/swagger/v1/swagger.json)
 
-#[API Documentation](https://cityapi.azurewebsites.net/swagger/index.html)
+# [API Documentation](https://cityapi.azurewebsites.net/swagger/index.html)
 
 
 ## Context

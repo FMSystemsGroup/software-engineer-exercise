@@ -1,0 +1,169 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API.Tests/FMS.API.Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API.Tests/FMS.API.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API.Tests/FMS.API.Tests.csproj",
+        "projectName": "FMS.API.Tests",
+        "projectPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API.Tests/FMS.API.Tests.csproj",
+        "packagesPath": "/Users/thomassmith/.nuget/packages/",
+        "outputPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/thomassmith/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/Users/thomassmith/Documents/DevExpress 21.1/Components/System/Components/packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/FMS.API.Minimal.csproj": {
+                "projectPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/FMS.API.Minimal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/FMS.API.Minimal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/FMS.API.Minimal.csproj",
+        "projectName": "FMS.API.Minimal",
+        "projectPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/FMS.API.Minimal.csproj",
+        "packagesPath": "/Users/thomassmith/.nuget/packages/",
+        "outputPath": "/Users/thomassmith/Documents/GitHub/software-engineer-exercise-thomas/FMS.API/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/thomassmith/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/Users/thomassmith/Documents/DevExpress 21.1/Components/System/Components/packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            },
+            "NSwag.MsBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[13.14.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
