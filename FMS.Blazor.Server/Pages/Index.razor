@@ -1,0 +1,91 @@
+﻿@page "/"
+@inherits IndexPage
+@inject HttpClient http
+@inject IIndexViewModel IndexViewModel
+@inject IDialogService DialogService
+
+<PageTitle>Index</PageTitle>
+
+<div style="max-width: 400px;">
+    <MudCard>
+        <MudCardContent>
+            <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+                <MudSelect Disabled="@(!citiesNotEmpty)" T="string" Label="City"
+                           Strict="true" Variant="Variant.Outlined" Format="F2"
+                           AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedCity">
+                    @if (IndexViewModel.Cities != null)
+                    {
+                        citiesNotEmpty = true;
+@foreach (var city in IndexViewModel.Cities)
+{
+<MudSelectItem Value="@city" />}}
+                </MudSelect>
+
+            </MudForm>
+        </MudCardContent>
+    </MudCard>
+
+    <MudPaper MinWidth="300px" Class="pa-8 ma-6 ml-auto" Elevation="3">
+        
+        <h1>
+            Forecast
+            <span><MudIcon Icon="@Icons.Material.Filled.Search" Title="icon" /></span>
+        </h1> 
+
+        <MudList>
+            <MudListItem Avatar="@Icons.Material.Filled.Event">
+                Date: @IndexViewModel?.WeatherForecastResult?.Date
+            </MudListItem>
+            <MudListItem Avatar="@Icons.Material.Filled.LocationCity">
+                Location: @SelectedCity
+            </MudListItem>
+            <MudListItem Avatar="@Icons.Material.Filled.Note">
+                Description: @IndexViewModel?.WeatherForecastResult?.Description
+            </MudListItem>
+            <MudListItem Avatar="@Icons.Material.Filled.Thermostat">
+                Temperature: @IndexViewModel?.WeatherForecastResult?.Temperature
+            </MudListItem>
+            <MudListItem Avatar="@Icons.Material.Filled.AutoGraph">
+                UV Index: @IndexViewModel?.WeatherForecastResult?.UVIndex
+            </MudListItem>
+        </MudList>
+    </MudPaper>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await IndexViewModel.GetAllCities();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void OnCityChange(string? selectedCity)
+    {
+        DateTime localDateTime = new(2018, 7, 4, 12, 0, 0, DateTimeKind.Local);
+
+        // Call Weather API
+        var t1 = Task.Run(() => IndexViewModel.GetWeatherForecast(localDateTime, selectedCity));
+
+        // Call dialog when api call is complete
+        t1.ContinueWith(antecedent => InvokeAsync(() => OpenDialog()));
+    }
+
+    private void OpenDialog()
+    {
+        if (IndexViewModel.WeatherForecastResult.StatusCode != HttpStatusCode.OK)
+        {
+            DialogService?.Show<BadStatusCodeDialog>("Forecast API Failed");
+        }
+    }
+
+    private string? selectedCity;
+    public string? SelectedCity
+    {
+        get { return selectedCity; }
+        set
+        {
+            selectedCity = value;
+            OnCityChange(selectedCity);
+        }
+    }
+}

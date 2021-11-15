@@ -1,0 +1,27 @@
+﻿@inject IIndexViewModel IndexViewModel
+
+<MudDialog>
+    <DialogContent>
+        <div>
+            <MudIcon Icon="@Icons.Material.Filled.Error" Size="Size.Large" Color="Color.Secondary" Title="Error" />
+
+            <ul>
+                <li>
+                    Check your API key or subscription status.
+                </li>
+                <li>
+                    Http Status Code: @IndexViewModel.WeatherForecastResult.StatusCode
+                </li>
+            </ul>
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
+
+    void Submit() => MudDialog?.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog?.Cancel();
+}
