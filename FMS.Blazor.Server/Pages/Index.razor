@@ -1,8 +1,9 @@
 ﻿@page "/"
 @inherits IndexPage
 @inject HttpClient http
-@inject IIndexViewModel IndexViewModel
 @inject IDialogService DialogService
+@inject ICityApiService CityApiService
+@inject IWeatherForecastService WeatherForecastService
 
 <PageTitle>Weather App Exercise</PageTitle>
 
@@ -13,16 +14,15 @@
                 <MudSelect Disabled="@(!citiesNotEmpty)" T="string" Label="City"
                            Strict="true" Variant="Variant.Outlined" Format="F2"
                            AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedCity">
-                    @if (IndexViewModel.Cities != null)
+                    @if (CityApiService.Cities != null)
                     {
                         citiesNotEmpty = true;
-                        @foreach (var city in IndexViewModel.Cities)
+                        @foreach (var city in CityApiService.Cities)
                         {
                             <MudSelectItem Value="@city" />
                         }
                     }
                 </MudSelect>
-
             </MudForm>
         </MudCardContent>
     </MudCard>
@@ -36,19 +36,19 @@
 
         <MudList>
             <MudListItem Avatar="@Icons.Material.Filled.Event">
-                Date: @IndexViewModel?.WeatherForecastResult?.Date
+                Date: @WeatherForecastService?.WeatherForecastResult?.Date
             </MudListItem>
             <MudListItem Avatar="@Icons.Material.Filled.LocationCity">
                 Location: @SelectedCity
             </MudListItem>
             <MudListItem Avatar="@Icons.Material.Filled.Note">
-                Description: @IndexViewModel?.WeatherForecastResult?.Description
+                Description: @WeatherForecastService?.WeatherForecastResult?.Description
             </MudListItem>
             <MudListItem Avatar="@Icons.Material.Filled.Thermostat">
-                Temperature: @IndexViewModel?.WeatherForecastResult?.Temperature
+                Temperature: @WeatherForecastService?.WeatherForecastResult?.Temperature
             </MudListItem>
             <MudListItem Avatar="@Icons.Material.Filled.AutoGraph">
-                UV Index: @IndexViewModel?.WeatherForecastResult?.UVIndex
+                UV Index: @WeatherForecastService?.WeatherForecastResult?.UVIndex
             </MudListItem>
         </MudList>
     </MudPaper>
@@ -57,8 +57,7 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await IndexViewModel.GetAllCities();
-        await InvokeAsync(StateHasChanged);
+        await CityApiService.GetAllCities();
     }
 
     private void OnCityChange(string? selectedCity)
@@ -66,7 +65,7 @@
         DateTime localDateTime = new(2018, 7, 4, 12, 0, 0, DateTimeKind.Local);
 
         // Call Weather API
-        var t1 = Task.Run(() => IndexViewModel.GetWeatherForecast(localDateTime, selectedCity));
+        var t1 = Task.Run(() => WeatherForecastService.GetWeatherForecast(localDateTime, selectedCity));
 
         // Call dialog when api call is complete
         t1.ContinueWith(antecedent => InvokeAsync(() => OpenDialog()));
@@ -74,7 +73,7 @@
 
     private void OpenDialog()
     {
-        if (IndexViewModel.WeatherForecastResult.StatusCode != HttpStatusCode.OK)
+        if (WeatherForecastService.WeatherForecastResult.StatusCode != HttpStatusCode.OK)
         {
             DialogService?.Show<BadStatusCodeDialog>("Forecast API Failed");
         }

@@ -1,5 +1,4 @@
 ﻿global using System;
-global using FMS.Blazor.Server.ViewModels;
 global using Microsoft.AspNetCore.Components;
 global using Microsoft.AspNetCore.Components.Web;
 global using MudBlazor.Services;

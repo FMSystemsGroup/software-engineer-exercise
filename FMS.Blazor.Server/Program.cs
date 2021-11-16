@@ -30,11 +30,12 @@ string? apiBaseAddress = null;
 
 // Add services to the container.
 
-builder.Services.AddTransient<ApiService>();
+builder.Services.AddTransient<CityApiService>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<IIndexViewModel, IndexViewModel>();
 builder.Services.AddMudServices(); // Free UI Components Library
+builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+builder.Services.AddScoped<ICityApiService, CityApiService>();
 
 // Add middleware pipeline.
 

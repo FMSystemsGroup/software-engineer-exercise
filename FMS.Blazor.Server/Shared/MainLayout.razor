@@ -1,5 +1,5 @@
 ﻿@inherits LayoutComponentBase
-@inject ApiService apiService
+@inject CityApiService CityApiServices
 @inject IConfiguration configuration
 
 <MudThemeProvider Theme="@currentTheme" />
@@ -28,10 +28,10 @@
 
                 <MudAppBar Bottom="true" Fixed="true" Elevation="1">
                     @{
-                        if (apiService.APIBaseAddress != null)
+                        if (CityApiServices.APIBaseAddress != null)
                         {
-                            var cityApiDocUrl = Path.Combine(apiService.APIBaseAddress, configuration["CityApiDoc"]);
-                            var cityApiSpecUrl = Path.Combine(apiService.APIBaseAddress, configuration["CityApiSpec"]);
+                            var cityApiDocUrl = Path.Combine(CityApiServices.APIBaseAddress, configuration["CityApiDoc"]);
+                            var cityApiSpecUrl = Path.Combine(CityApiServices.APIBaseAddress, configuration["CityApiSpec"]);
 
                             <MudButton StartIcon="@Icons.Material.Filled.Api" Color="Color.Secondary" Edge="Edge.End">
                                 <a href="@cityApiSpecUrl" target="_blank" style="color:#ffffff;" >API Spec</a>

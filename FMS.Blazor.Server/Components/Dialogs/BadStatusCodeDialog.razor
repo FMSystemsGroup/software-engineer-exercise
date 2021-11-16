@@ -1,4 +1,4 @@
-﻿@inject IIndexViewModel IndexViewModel
+﻿@inject IWeatherForecastService WeatherForecastService
 
 <MudDialog>
     <DialogContent>
@@ -10,7 +10,7 @@
                     Check your API key or subscription status.
                 </li>
                 <li>
-                    Http Status Code: @IndexViewModel.WeatherForecastResult.StatusCode
+                    Http Status Code: @WeatherForecastService.WeatherForecastResult.StatusCode
                 </li>
             </ul>
         </div>

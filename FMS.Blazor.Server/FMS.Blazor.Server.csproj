@@ -21,7 +21,6 @@
     <None Remove="Components\Dialogs\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Components\" />
     <Folder Include="Components\Dialogs\" />
     <Folder Include="Services\" />

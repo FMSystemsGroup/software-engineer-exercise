@@ -23,6 +23,7 @@ namespace FMS.Blazor.Server.Shared
         {
             Palette = new Palette()
             {
+                Primary = Colors.Cyan.Darken3,
                 Black = "#272c34"
             }
         };
