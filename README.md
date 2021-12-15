@@ -20,9 +20,8 @@ Create a .NET Core unit test project to test this API action.
 Using any web technologies you'd like, display the list of cities in a drop-down list. The list should be populated via a request to the city collection API that you created. The UI design should be simple and take minimal time to develop.
 
 ### Requirement 4:
-Selecting a city from the drop-down needs to trigger a call out to the [DarkSky API](https://darksky.net/dev) and retrieve the weather for the selected city from July 4, 2018 at exactly noon local time. On the screen display the noon current summary description (example: Mostly Sunny), temperature (example: 88.81), and UV index (example: 5).
+Selecting a city from the drop-down needs to trigger a call out to the [Visual Crossing API](https://www.visualcrossing.com/) and retrieve the weather for the selected city from July 4, 2018 at exactly noon local time. On the screen display the noon current summary description (example: Mostly Sunny), temperature (example: 88.81), and UV index (example: 5).
 
-> Note: The Dark Sky API [doesn't enable CORS](https://darksky.net/dev/docs/faq#cross-origin). Handle this case as you see fit.
 
 ### Bonus
 - Write clear documentation on how the app was designed and how to run the code.
