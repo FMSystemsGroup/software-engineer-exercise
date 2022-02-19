@@ -1,0 +1,39 @@
+﻿@model FMSystem.Web.Models.CityViewModel
+@{
+	ViewBag.Title = "City List";
+}
+<div class="row">
+	<div class="col-md-4">
+		@Html.DropDownListFor(model => model.dbModel.City, new SelectList(Model.cityList, "City", "City"), new { @class = "form-control" })
+	</div>
+</div>
+<div class="row" style="margin-top:10px;">
+	<div class="col-md-4">
+		<label>Description:</label>
+		@Html.TextBox("conditions", null, new { @class = "form-control", @style = "margin-top:10px;" })
+	</div>
+	<div class="col-md-4">
+		<label>Temperature:</label>
+		@Html.TextBox("temp", null, new { @class = "form-control", @style = "margin-top:10px;" })
+	</div>
+	<div class="col-md-4">
+		<label>UV Index:</label>
+		@Html.TextBox("uvindex", null, new { @class = "form-control", @style = "margin-top:10px;" })
+	</div>
+</div>
+<script type="text/javascript">
+	$('#dbModel_City').change(function () {
+		$.ajax({
+			url: '/Home/GetByCity/',
+			type: 'GET',
+			data: { city: $(this).val() },
+			success: function (result) {
+				$('#temp').val(result.temp);
+				$('#feelslike').val(result.feelslike);
+				$('#uvindex').val(result.uvindex);
+				$('#description').val(result.description);
+				$('#conditions').val(result.conditions);
+			}
+		});
+	});
+</script>
