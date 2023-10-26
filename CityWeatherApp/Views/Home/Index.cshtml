@@ -1,0 +1,36 @@
+﻿@model CityViewModel
+@{
+    ViewData["Title"] = "City Weather";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5>City Weather</h5>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label style="margin-bottom:5px;margin-top:-10px;margin-right:5px;">City:</label>
+            @Html.DropDownListFor(m => m.SelectedValue, Model.Cities, "Select a City", new {style= "width:250px;border-radius:5px;", @onchange = "city_Onchange()" })
+        </div>
+        <div id="summary" class="form-group">
+            <div id="loading" class="load" style="display:none">
+                <p>Loading Data...</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span id="city-header"></span>
+                </div>
+                <div class="card-body">
+                    <p id="description"></p>
+                    <p id="temperature"></p>
+                    <p id="uvindex"></p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
